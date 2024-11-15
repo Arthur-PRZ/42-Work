@@ -1,5 +1,15 @@
 NAME = libft.a
 
+BONUS = ft_lstadd_front_bonus.c \
+	ft_lstnew_bonus.c \
+	ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c \
+	ft_lstadd_back_bonus.c \
+	ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c \
+	ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c
+
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
@@ -36,9 +46,11 @@ FC = ft_atoi.c \
 	ft_strtrim.c \
 	ft_substr.c \
 	ft_tolower.c \
-	ft_toupper.c
+	ft_toupper.c 
 
 FO = $(FC:.c=.o)
+
+FOB = $(BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -48,8 +60,11 @@ $(NAME): $(FO)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(FOB)
+	ar rcs $(NAME) $(FOB)
+
 clean:
-	rm -f $(FO)
+	rm -f $(FO) && rm -f $(FOB)
 
 fclean: clean
 	rm -rf $(NAME)

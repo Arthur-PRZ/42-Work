@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:00:09 by artperez          #+#    #+#             */
-/*   Updated: 2024/11/13 10:43:07 by artperez         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:30:50 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static char	*nbr(int n)
 	char	*str;
 
 	if (n == -2147483648)
-	{	
+	{
 		str = ft_strdup("-2147483648");
 		if (str == NULL)
 			return (NULL);
 		return (str);
 	}
 	if (n == 0)
-	{	
+	{
 		str = ft_strdup("0");
 		if (str == NULL)
 			return (NULL);
