@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:09:26 by artperez          #+#    #+#             */
-/*   Updated: 2024/11/08 11:07:14 by artperez         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:05:37 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		a++;
 	if (ft_strlen(s1) == a)
 	{
-		str = strdup("");
+		str = ft_strdup("");
 		if (str == NULL)
 			return (NULL);
 		return (str);

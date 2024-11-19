@@ -6,13 +6,13 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:48:27 by artperez          #+#    #+#             */
-/*   Updated: 2024/11/13 11:19:45 by artperez         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:06:48 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*avant(char *dest, char *src, int n)
+void	*before(char *dest, char *src, int n)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		return (NULL);
 	i = 0;
 	if (de < sr)
-		avant(de, sr, n);
+		before(de, sr, n);
 	else
 	{
 		i = n;
