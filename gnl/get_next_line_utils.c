@@ -44,7 +44,7 @@ int	ft_strchr(char *str, char c)
 	while (str[i] != '\0' && str[i] != c)
 	{
 		i++;
-		if (str[i] == c || str[i] == '\0')
+		if (str[i] == c)
 			return (1);
 	}
 	return (0);

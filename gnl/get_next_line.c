@@ -50,10 +50,8 @@ char	*ft_getline_n(char *buffer)
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static char		*buffer;
-	int				len;
+	static char			*buffer;
 
-	len = 1;
 	buffer = ft_getline(fd, buffer);
 	line = ft_getline_n(buffer);
 	return (line);
@@ -63,14 +61,17 @@ int	main()
 {
 	int	file;
 	char *str;
-
-	file = open("/home/artperez/Stud/exercices/get_next_line/test.txt", O_RDONLY);
+	
+	file = open("/home/Arthur/42/Exo42/gnl/test.txt", O_RDONLY);
+	//file = open("/home/artperez/Stud/exercices/get_next_line/test.txt", O_RDONLY);
 	if (file == -1)
 	{
 		printf("t'as pas reussi a ouvrir le fichier nullos");
 		return (0);
 	}
 	str = malloc(10000 * sizeof(char));
+	str = get_next_line(file);
+	printf("%s", str);
 	str = get_next_line(file);
 	printf("%s", str);
 	close(file);
