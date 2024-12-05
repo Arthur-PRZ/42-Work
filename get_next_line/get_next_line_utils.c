@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:34 by artperez          #+#    #+#             */
-/*   Updated: 2024/12/04 09:44:14 by artperez         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:49:25 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
-	
+
 	i = 0;
 	while (src[i] != '\0' && (i == 0 || src[i - 1] != '\n'))
 	{
@@ -51,7 +51,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 int	ft_strlen(char *str, int a)
 {
 	int	i;
-	
+
 	i = 0;
 	if (str == NULL)
 		return (0);
@@ -70,8 +70,8 @@ int	ft_strlen(char *str, int a)
 
 int	ft_strchr(char *str, char c)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (str[0] == c)
 		return (1);
