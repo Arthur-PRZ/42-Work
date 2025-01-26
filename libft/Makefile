@@ -23,7 +23,7 @@ BONUS = ft_lstadd_front_bonus.c \
 	ft_lstmap_bonus.c
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 FC = ft_atoi.c \
 	ft_bzero.c \
