@@ -10,13 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef "PUSH_SWAP_H"
-#define "PUSH_SWAP_H"
+#ifndef PUSH_SWAP_H
+#define PUSH_SWAP_H
 
-typedef int s_a_list
+typedef struct s_list_a
 {
 	int	a;
-	t_list_a *next;
+	struct s_list_a *next;
 } t_list_a;
 
-#include "libft.h"
+void	ft_taking_list(char **argv, t_list_a *list_a, int argc);
+
+#include "../libft/libft.h"
+
+
+#endif

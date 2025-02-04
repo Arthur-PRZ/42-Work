@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_taking_list(char **argv, t_list_a *list_a, int argc)
 {
@@ -21,13 +21,16 @@ void	ft_taking_list(char **argv, t_list_a *list_a, int argc)
 	tab = ft_split(argv[1], ' ');
 	if (tab == NULL)
 		return ;
+	ft_lstnew();
 	if (argc == 2)
 	{
-		list_a->a = ft_atoi(argv[1]);
+		list_a = ft_lstnew(ft_atoi(argv[1]));
 		return ;
 	}
 	while (argv[a])
 	{
+		if (a == 0)
+			ft_lstnew(ft_atoi(argv[1]));
 		list_a->a = ft_atoi(argv[a]);
 		list_a = list_a->next;
 		a++;
