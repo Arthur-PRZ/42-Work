@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:34 by artperez          #+#    #+#             */
-/*   Updated: 2024/12/05 13:49:25 by artperez         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:55:46 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -26,7 +26,7 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc_gnl(size_t nmemb, size_t size)
 {
 	void	*tab;
 	size_t	i;
@@ -48,7 +48,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (tab);
 }
 
-int	ft_strlen(char *str, int a)
+int	ft_strlen_g(char *str, int a)
 {
 	int	i;
 
@@ -68,7 +68,7 @@ int	ft_strlen(char *str, int a)
 	return (i);
 }
 
-int	ft_strchr(char *str, char c)
+int	ft_strchr_gnl(char *str, char c)
 {
 	int	i;
 
@@ -84,7 +84,7 @@ int	ft_strchr(char *str, char c)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -94,7 +94,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	a = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	str = ft_calloc(ft_strlen(s2, 1) + ft_strlen(s1, 1) + 1, sizeof(char));
+	str = ft_calloc(ft_strlen_g(s2, 1) + ft_strlen_g(s1, 1) + 1, sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	while (s1[i] != '\0')

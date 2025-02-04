@@ -6,11 +6,11 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:36:09 by artperez          #+#    #+#             */
-/*   Updated: 2024/12/12 09:07:48 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:23:40 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "libft.h"
 
 char	*ft_readline(int fd, char *buffer)
 {
@@ -34,7 +34,7 @@ char	*ft_readline(int fd, char *buffer)
 			return (free(buffer), free(temp_buf), NULL);
 		temp_buf[readbytes] = '\0';
 		buffer = ft_free(buffer, temp_buf);
-		if (!buffer || ft_strchr(buffer, '\n'))
+		if (!buffer || ft_strchr_gnl(buffer, '\n'))
 			break ;
 	}
 	free(temp_buf);
@@ -45,7 +45,7 @@ char	*ft_free(char *buffer, char *temp_buf)
 {
 	char	*temp;
 
-	temp = ft_strjoin(buffer, temp_buf);
+	temp = ft_strjoin_gnl(buffer, temp_buf);
 	if (!temp)
 	{
 		free(buffer);
@@ -92,7 +92,7 @@ char	*update_buffer(char *buffer)
 		i++;
 	if (!buffer[i])
 		return (free(buffer), NULL);
-	new_buffer = ft_calloc((ft_strlen(buffer + i, 1) + 2), sizeof(char));
+	new_buffer = ft_calloc((ft_strlen_g(buffer + i, 1) + 2), sizeof(char));
 	if (new_buffer == NULL)
 		return (NULL);
 	i++;
@@ -114,7 +114,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer[fd] = ft_readline(fd, buffer[fd]);
-	if (ft_strlen(buffer[fd], 0) == 0)
+	if (ft_strlen_g(buffer[fd], 0) == 0)
 	{
 		free(buffer[fd]);
 		buffer[fd] = NULL;
