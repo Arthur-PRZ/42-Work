@@ -6,7 +6,7 @@
 #    By: artperez <artperez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 09:42:21 by artperez          #+#    #+#              #
-#    Updated: 2025/02/03 10:24:12 by artperez         ###   ########.fr        #
+#    Updated: 2025/02/05 09:28:24 by artperez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,8 @@ all: $(NAME)
 $(LIBFT_PATH):
 	make -sC libft/
 
-$(MLX_PATH):
-	make -sC minilibx-linux/
 
-$(NAME): $(FO) $(LIBFT_PATH) $(MLX_PATH)
+$(NAME): $(FO) $(LIBFT_PATH)
 	echo "Compiling push_swap"
 	$(CC) $(CFLAGS) $(FO) $(LIBFT_PATH) -o $(NAME)
 
