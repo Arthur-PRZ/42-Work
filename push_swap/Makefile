@@ -6,7 +6,7 @@
 #    By: artperez <artperez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 09:42:21 by artperez          #+#    #+#              #
-#    Updated: 2025/02/05 09:28:24 by artperez         ###   ########.fr        #
+#    Updated: 2025/02/06 10:52:21 by artperez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 LIBFT_PATH = libft/libft.a
 FC = src/main.c \
      src/utils.c \
+	 sre/clean.c
 
 FO = $(FC:.c=.o)
 
