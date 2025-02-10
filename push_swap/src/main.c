@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/06 10:54:01 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:02:59 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_taking_list(char **argv, t_list_a **list_a, int argc)
 				return ;
 			*list_a = ft_lstnew_ps(ft_atoi(tab[0]));
 		}
-		check_list(list_a, tab[a]);
+		check_list(list_a, tab[a], tab);
 		a++;
 		if (tab[a] == NULL)
 			break ;
@@ -36,22 +36,22 @@ void	ft_taking_list(char **argv, t_list_a **list_a, int argc)
 		// free nl
 		ft_lstadd_back_ps(list_a, new_node);
 	}
+	if (argc != 2)
+		a = 1;
 	while (argv[a])
 	{
-		check_list(list_a, argv[a]);
-		if (a == 0)
+		if (a == 1)
+		{
+			check_list(list_a, argv[a], NULL);
 	 		*list_a = ft_lstnew_ps(ft_atoi(argv[1]));
+		}
 		a++;
 		if (argv[a] == NULL)
 			break ;
+		check_list(list_a, argv[a], NULL);
 		new_node = ft_lstnew_ps(ft_atoi(argv[a]));
 		ft_lstadd_back_ps(list_a, new_node);
 	}
-}
-
-void error_argument(t_list_a **list_a, char *str)
-{
-	
 }
 
 int	main(int argc, char **argv)
@@ -61,6 +61,5 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	ft_taking_list(argv, &list_a, argc);
-	// ft_check_list(&list_a);
-	
+	printf("%d", list_a->a);
 }

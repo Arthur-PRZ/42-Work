@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/06 10:51:51 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:37:22 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,33 @@ void	ft_lstadd_back_ps(t_list_a **lst, t_list_a *new)
 	temp->next = new;
 }
 
-void	check_list(t_list_a **list_a, char *str)
+void error_argument(t_list_a **list_a, char **tab)
+{
+	int	a;
+	t_list_a	*temp;
+	t_list_a	*next;
+	
+	temp = *list_a;
+	a = 0;
+	if (tab != NULL)
+	{
+		while(tab[a])
+		{
+			free(tab[a]);
+			a++;
+		}
+		free(tab);
+	}
+	while(temp->next != NULL)
+	{
+		*next = list_a->next;
+		free(temp);
+		temp = next;
+	}
+	write(1, "Error\nArguments invalid.\n", 27);
+}
+
+void	check_list(t_list_a **list_a, char *str, char **tab)
 {
 	int	i;
 	
@@ -47,8 +73,7 @@ void	check_list(t_list_a **list_a, char *str)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			error_argument(list_a, str);
+			error_argument(list_a, tab);
 		i++;
 	}
-	list_a = NULL;
 }
