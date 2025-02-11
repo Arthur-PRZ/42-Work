@@ -6,57 +6,64 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/10 10:02:59 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:30:30 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_taking_list(char **argv, t_list_a **list_a, int argc)
+void	ft_taking_list(char **argv, t_list **list_a, int argc)
 {
 	int	a;
 	char	**tab;
-	t_list_a	*new_node;
+	t_list	*new_node;
 	
 	a = 0;
-	while (argc == 2)
+	tab = NULL;
+	if (argc == 2)
 	{
-		if (a == 0)
+		while (argc == 2)
 		{
-			tab = ft_split(argv[1], ' ');
-			if (tab == NULL)
-				return ;
-			*list_a = ft_lstnew_ps(ft_atoi(tab[0]));
+			if (a == 0)
+			{
+				tab = ft_split(argv[1], ' ');
+				if (tab == NULL)
+					return ;
+				*list_a = ft_lstnew_ps(ft_atoi(tab[0]));
+			}
+			check_list(list_a, tab[a], tab);
+			a++;
+			if (tab[a] == NULL)
+				break ;
+			new_node = ft_lstnew_ps(ft_atoi(tab[a]));
+			ft_lstadd_back_ps(list_a, new_node);
 		}
-		check_list(list_a, tab[a], tab);
-		a++;
-		if (tab[a] == NULL)
-			break ;
-		new_node = ft_lstnew_ps(ft_atoi(tab[a]));
-		// free nl
-		ft_lstadd_back_ps(list_a, new_node);
 	}
 	if (argc != 2)
 		a = 1;
-	while (argv[a])
+	if (argc != 2)
 	{
-		if (a == 1)
+		while (argv[a])
 		{
+			if (a == 1)
+			{
+				check_list(list_a, argv[a], NULL);
+	 			*list_a = ft_lstnew_ps(ft_atoi(argv[1]));
+			}
+			a++;
+			if (argv[a] == NULL)
+				break ;
 			check_list(list_a, argv[a], NULL);
-	 		*list_a = ft_lstnew_ps(ft_atoi(argv[1]));
+			new_node = ft_lstnew_ps(ft_atoi(argv[a]));
+			ft_lstadd_back_ps(list_a, new_node);
 		}
-		a++;
-		if (argv[a] == NULL)
-			break ;
-		check_list(list_a, argv[a], NULL);
-		new_node = ft_lstnew_ps(ft_atoi(argv[a]));
-		ft_lstadd_back_ps(list_a, new_node);
 	}
+	check_duplicate(list_a, tab);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list_a *list_a;
+	t_list *list_a;
 
 	if (argc == 1)
 		return (0);
