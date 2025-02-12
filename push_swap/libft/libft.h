@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:44:00 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/04 10:09:51 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:43:36 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 #  define BUFFER_SIZE 3
 # endif
 
-typedef struct s_list
+typedef struct s_list_libft
 {
 	void			*content;
-	struct s_list	*next;
-}	t_list;
+	struct s_list_libft	*next;
+}	t_list_libft;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -66,15 +66,15 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-t_list	*ft_lstnew(int *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list_libft	*ft_lstnew(int *content);
+void	ft_lstadd_front(t_list_libft **lst, t_list_libft *new);
+int		ft_lstsize(t_list_libft *lst);
+t_list_libft	*ft_lstlast(t_list_libft *lst);
+void	ft_lstadd_back(t_list_libft **lst, t_list_libft *new);
+void	ft_lstdelone(t_list_libft *lst, void (*del)(void*));
+void	ft_lstclear(t_list_libft **lst, void (*del)(void*));
+void	ft_lstiter(t_list_libft *lst, void (*f)(void *));
+t_list_libft	*ft_lstmap(t_list_libft *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 int		ft_strlen_g(char *str, int a);
 char	*ft_strcpy(char *dest, char *src);

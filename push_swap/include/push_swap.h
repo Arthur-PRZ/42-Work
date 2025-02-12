@@ -6,16 +6,18 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/11 11:29:22 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:31:21 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
+#include "../libft/libft.h"
+
 typedef struct s_list
 {
-	int	a;
+	int	nb;
 	struct s_list *next;
 } t_list;
 
@@ -26,8 +28,12 @@ void	ft_lstadd_back_ps(t_list **lst, t_list *new);
 void	check_list(t_list **list_a, char *str, char **tab);
 void	error_argument(t_list **list_a, char **tab);
 void	check_duplicate(t_list **list_a, char **tab);
-
-#include "../libft/libft.h"
-
+void	sa(t_list **list);
+void	sb(t_list **list);
+void	swap(t_list **list);
+void	ss(t_list **list_a, t_list **list_b);
+void	pa(t_list **list_taking, t_list **list_giving);
+void	push(t_list **list_taking, t_list **list_giving);
+void	pb(t_list **list_a, t_list **list_b);
 
 #endif

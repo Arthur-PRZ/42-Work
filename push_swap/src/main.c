@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/11 11:30:30 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:40:13 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,14 @@ void	ft_taking_list(char **argv, t_list **list_a, int argc)
 int	main(int argc, char **argv)
 {
 	t_list *list_a;
+	t_list *list_b;
 
+	// list_b = NULL;
+	list_b = ft_lstnew_ps(3);
 	if (argc == 1)
 		return (0);
 	ft_taking_list(argv, &list_a, argc);
-	printf("%d", list_a->a);
+	printf("%d", list_a->nb);
+	pa(&list_a, &list_b);
+	printf("%d", list_a->nb);
 }

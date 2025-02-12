@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/11 11:29:55 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/12 09:49:49 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew_ps(int content)
 	list = malloc(sizeof(t_list));
 	if (list == NULL)
 		return (NULL);
-	list->a = content;
+	list->nb = content;
 	list->next = NULL;
 	return (list);
 }
