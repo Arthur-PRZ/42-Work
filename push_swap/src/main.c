@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/12 12:40:13 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/13 10:10:28 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,5 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_taking_list(argv, &list_a, argc);
 	printf("%d", list_a->nb);
-	pa(&list_a, &list_b);
-	printf("%d", list_a->nb);
+	sort(&list_a);
 }

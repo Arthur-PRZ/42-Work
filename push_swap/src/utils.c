@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/12 09:49:49 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/13 09:40:41 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ void	ft_lstadd_back_ps(t_list **lst, t_list *new)
 	while (temp != NULL && temp->next != NULL )
 		temp = temp->next;
 	temp->next = new;
+}
+
+void	ft_lstadd_front_ps(t_list **lst, t_list *new)
+{
+	if (lst == 0 || new == 0)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 
 void	check_list(t_list **list_a, char *str, char **tab)

@@ -6,7 +6,7 @@
 #    By: artperez <artperez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 09:42:21 by artperez          #+#    #+#              #
-#    Updated: 2025/02/12 10:38:50 by artperez         ###   ########.fr        #
+#    Updated: 2025/02/13 10:09:46 by artperez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,12 @@ LIBFT_PATH = libft/libft.a
 FC = src/main.c \
      src/utils.c \
 	 src/clear.c \
-	 src/instructions.c \
-	 src/instructions2.c \
-	 src/check_args.c  \
+	 src/push.c \
+	 src/rotate.c \
+	 src/swap.c \
+	 src/check_args.c \
+	 src/reverse_rotate.c \
+	 src/sort.c
 
 FO = $(FC:.c=.o)
 

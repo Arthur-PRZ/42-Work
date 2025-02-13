@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 12:50:12 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/13 09:18:32 by artperez         ###   ########.fr       */
+/*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
+/*   Updated: 2025/02/13 10:14:56 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	rotate(t_list **list)
+int	sort_good(t_list **list_a)
 {
-	t_list	*first;
-	t_list	*old_first;
-	
-	old_first = *list;
-	first = (*list)->next;
-	ft_lstadd_back_ps(list, *list);
-	*list = first;
-	old_first->next = NULL;
-}
-void	ra(t_list **list_a)
-{
-	ft_printf("ra\n");
-	rotate(list_a);
+	t_list	*temp;
+	int		value;
+
+	temp = *list_a;
+	while(temp->next != NULL)
+	{
+		value = temp->nb;
+		temp = temp->next;
+		if (value > temp->nb)
+			return (1);
+	}
+	return (0);
 }
 
-void	rb(t_list **list_b)
+void	sort(t_list **list_a)
 {
-	ft_printf("rb\n");
-	rotate(list_b);
-}
-
-void	rr(t_list **list_a, t_list **list_b)
-{
-	ft_printf("rr\n");
-	rotate(list_a);
-	rotate(list_b);
+	while(sort_good(list_a) == 1)
+	{
+		ft_printf("NULLOS");
+	}
 }
