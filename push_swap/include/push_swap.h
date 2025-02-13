@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/12 11:31:21 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/13 10:09:15 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,20 @@ void	ss(t_list **list_a, t_list **list_b);
 void	pa(t_list **list_taking, t_list **list_giving);
 void	push(t_list **list_taking, t_list **list_giving);
 void	pb(t_list **list_a, t_list **list_b);
+void	rotate(t_list **list);
+void	ra(t_list **list_a);
+void	rb(t_list **list_b);
+void	rr(t_list **list_a, t_list **list_b);
+void	reverse_rotate(t_list **list);
+void	rrb(t_list **list_b);
+void	rra(t_list **list_a);
+void	rrr(t_list **list_a, t_list **list_b);
+void	ft_lstadd_front_ps(t_list **lst, t_list *new);
+void	sort(t_list **list_a);
+int	sort_good(t_list **list_a);
+
+
+
+
 
 #endif
