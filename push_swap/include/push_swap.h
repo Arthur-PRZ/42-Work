@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/13 10:09:15 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:32:42 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_list
 {
 	int	nb;
+	int	target;
 	struct s_list *next;
 } t_list;
 
@@ -46,6 +47,9 @@ void	rrr(t_list **list_a, t_list **list_b);
 void	ft_lstadd_front_ps(t_list **lst, t_list *new);
 void	sort(t_list **list_a);
 int	sort_good(t_list **list_a);
+void	sort_list_b(t_list **list);
+void	sort_list_b(t_list **list);
+int	sort_good_decreasing(t_list **list_a);
 
 
 
