@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions2.c                                    :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 10:39:03 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/12 11:29:29 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:37:04 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 void	push(t_list **list_taking, t_list **list_giving)
 {
 	t_list	*first;
-	
+
 	if (*list_giving == NULL)
         return;
-	
 	first = *list_giving;
 	*list_giving = (*list_giving)->next;
-	first->next = *list_taking;
+	if (*list_taking == NULL)
+		first->next = NULL;
+	else
+		first->next = *list_taking;
 	*list_taking = first;
 }
 
