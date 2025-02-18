@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/18 11:39:32 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:28:41 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	target(t_list **list_a, t_list **list_b)
 	{
 		temp_b = *list_b;
 		smaller_value = temp_a->nb;
-		while (temp_b->next != NULL)
+		while (temp_b != NULL)
 		{
 			if (temp_a->nb - temp_b->nb < smaller_value)
 				temp_a->target = temp_b;
@@ -90,8 +90,11 @@ void	sort(t_list **list_a, t_list **list_b)
 	int		size;
 	
 	size = ft_lstsize_ps(*list_a);
-	pb(list_a, list_b);
-	pb(list_a, list_b);
+	if (size > 3)
+	{
+		pb(list_a, list_b);
+		pb(list_a, list_b);
+	}
 	target(list_a, list_b);
 	// while(ft_lstsize(list_a) > 3)
 	// {
