@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/18 14:28:41 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:32:12 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,18 @@ int	sort_good_decreasing(t_list **list_a)
 // 	// }	
 // }
 
+int	closestzero_min(int	nb, int nb2)
+{
+	int	closestzero;
+
+	while(temp != NULL)
+	{
+		if (nb > nb2)
+			closestzero = nb - nb2;	
+		temp = temp->next
+	}
+}
+
 void	target(t_list **list_a, t_list **list_b)
 {
 	t_list *temp_a;
@@ -71,14 +83,17 @@ void	target(t_list **list_a, t_list **list_b)
 	int		smaller_value;
 	
 	temp_a = *list_a;
-	while (temp_a->next != NULL)
+	while (temp_a != NULL)
 	{
 		temp_b = *list_b;
-		smaller_value = temp_a->nb;
+		smaller_value = temp_b->nb;
 		while (temp_b != NULL)
 		{
-			if (temp_a->nb - temp_b->nb < smaller_value)
+			if (closestzero_min(temp_a->nb, temp_b->nb) < smaller_value)
+			{
+				smaller_value = closestzero_min();
 				temp_a->target = temp_b;
+			}
 			temp_b = temp_b->next;
 		}
 		temp_a = temp_a->next;
@@ -90,7 +105,7 @@ void	sort(t_list **list_a, t_list **list_b)
 	int		size;
 	
 	size = ft_lstsize_ps(*list_a);
-	if (size > 3)
+	if (size > 4)
 	{
 		pb(list_a, list_b);
 		pb(list_a, list_b);
