@@ -6,7 +6,7 @@
 #    By: artperez <artperez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 09:42:21 by artperez          #+#    #+#              #
-#    Updated: 2025/02/13 10:09:46 by artperez         ###   ########.fr        #
+#    Updated: 2025/02/25 10:40:25 by artperez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ FC = src/main.c \
 	 src/swap.c \
 	 src/check_args.c \
 	 src/reverse_rotate.c \
-	 src/sort.c
+	 src/sort.c \
+	 src/sort_back.c \
+	 src/sort_back2.c 
 
 FO = $(FC:.c=.o)
 

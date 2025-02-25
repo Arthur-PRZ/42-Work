@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/24 14:45:14 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:06:41 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,13 @@ int		check_min(int nb, t_list *list, t_list **add_target)
 	
 	bigger_b = list->nb;
 	bigger_value = list;
-	while(nb < list->nb)
+	while(list != NULL) 
 	{
-		if (bigger_b < list->nb)
+		if (list->nb < nb && bigger_b < list->nb)
+		{
+			bigger_b = list->nb;
 			bigger_value = list;
+		}
 		list = list->next;
 		if(list == NULL)
 		{
@@ -129,9 +132,9 @@ void	add_cheapest(t_list **list_a, t_list **list_b)
 			add_b(push_node, list_b, list_a);
 			return ;
 		}
-		if (smaller_pc > current_a->nb)
+		if (smaller_pc > current_a->push_cost)
 		{
-			smaller_pc = current_a->nb;
+			smaller_pc = current_a->push_cost;
 			push_node = current_a;
 		}
 		current_a = current_a->next;
@@ -255,7 +258,6 @@ void	sort_b(t_list **list_a, t_list **list_b)
 		get_pcost(list_a, list_b);
 		add_cheapest(list_a, list_b);
 	}
-	sort_3(list_a);
 }
 
 void	sort_3(t_list **list_a)
@@ -264,26 +266,17 @@ void	sort_3(t_list **list_a)
 	t_list *last_node;
 	int		bigger_value;
 	
+	if (sort_good(list_a))
+		return;
 	current = *list_a;
-	while(sort_good(list_a) == 0)
-	{
-		bigger_value = current->nb;
-		current = current->next;
-		if (current->next = NULL)
-		{
-			if (current->nb == bigger_value)
-				sa(list_a)
-			else
-				
-		}
-		if (bigger_value < current->nb)
-		{
-			bigger_value = current->nb
-			last_node = current;
-		}
-		
-	}
-		
+	if (current->nb > current->next->nb && current->nb > current->next->next->nb)
+		sa(list_a);
+	current = *list_a;
+	if (current->next->nb > current->next->next->nb)
+		ra(list_a);
+	current = *list_a;
+	if (current->nb > current->next->nb)
+		sa(list_a);
 }
 
 void	sort(t_list **list_a, t_list **list_b)
@@ -297,16 +290,7 @@ void	sort(t_list **list_a, t_list **list_b)
 		pb(list_a, list_b);
 	}
 	sort_b(list_a, list_b);
-	// while(ft_lstsize(list_a) > 3)
-	// {
-	// 	target(list_a, list_b);
-	// 	add_cheapest();
-	// }
-	// sort_a();
-	// while(ft_lstsize(list_a) < size)
-	// {
-	// 	target_back();
-	// 	add_cheapest_back();
-	// }
+	sort_3(list_a)
+	sort_a(list_a, list_b);
 }
 

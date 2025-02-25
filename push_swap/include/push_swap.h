@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/24 13:58:52 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:11:16 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	reverse_b(int pos_b, t_list **list_b);
 void	add_b(t_list *push_node, t_list **list_b, t_list **list_a);
 int		pos_target(t_list *list, t_list *target);
 int		pc(int pos, int size);
+int		check_max(int nb, t_list *list, t_list **add_target);
 
 
 
