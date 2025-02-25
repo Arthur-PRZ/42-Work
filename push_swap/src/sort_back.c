@@ -14,7 +14,7 @@
 
 void	sort_a(t_list **list_a, t_list **list_b)
 {
-	while (ft_lstsize_ps(*list_b) != NULL)
+	while (*list_b != NULL)
 	{
 		target_back(list_a, list_b);
 		get_pcost_back(list_a, list_b);
