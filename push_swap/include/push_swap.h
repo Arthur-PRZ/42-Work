@@ -50,7 +50,6 @@ void	sort(t_list **list_a, t_list **list_b);
 int		sort_good(t_list **list_a);
 void	sort_list_b(t_list **list);
 void	sort_list_b(t_list **list);
-int		sort_good_decreasing(t_list **list_a);
 void	target(t_list **list_a, t_list **list_b);
 int		ft_lstsize_ps(t_list *lst);
 int		check_min(int nb, t_list *list, t_list **add_target);
@@ -61,6 +60,13 @@ void	add_b(t_list *push_node, t_list **list_b, t_list **list_a);
 int		pos_target(t_list *list, t_list *target);
 int		pc(int pos, int size);
 int		check_max(int nb, t_list *list, t_list **add_target);
+void	get_pcost_back(t_list **list_a, t_list **list_b);
+void	sort_a(t_list **list_a, t_list **list_b);
+void	add_cheapest_back(t_list **list_a, t_list **list_b);
+void	target_back(t_list **list_a, t_list **list_b);
+void	sort_3(t_list **list_a);
+void	add_a(t_list *push_node, t_list **list_b, t_list **list_a);
+
 
 
 

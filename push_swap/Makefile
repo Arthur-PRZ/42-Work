@@ -17,6 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 LIBFT_PATH = libft/libft.a
 FC = src/main.c \
      src/utils.c \
+	 src/utils2.c \
 	 src/clear.c \
 	 src/push.c \
 	 src/rotate.c \
@@ -25,7 +26,8 @@ FC = src/main.c \
 	 src/reverse_rotate.c \
 	 src/sort.c \
 	 src/sort_back.c \
-	 src/sort_back2.c 
+	 src/sort_back2.c  \
+	 src/sort2.c \
 
 FO = $(FC:.c=.o)
 
