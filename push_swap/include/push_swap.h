@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/25 11:11:16 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:33:00 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define PUSH_SWAP_H
 
 #include "../libft/libft.h"
+#include <stdbool.h>
+
 
 typedef struct s_list
 {
@@ -47,7 +49,7 @@ void	rra(t_list **list_a);
 void	rrr(t_list **list_a, t_list **list_b);
 void	ft_lstadd_front_ps(t_list **lst, t_list *new);
 void	sort(t_list **list_a, t_list **list_b);
-int		sort_good(t_list **list_a);
+bool		sort_good(t_list **list_a);
 void	sort_list_b(t_list **list);
 void	sort_list_b(t_list **list);
 void	target(t_list **list_a, t_list **list_b);
@@ -66,7 +68,7 @@ void	add_cheapest_back(t_list **list_a, t_list **list_b);
 void	target_back(t_list **list_a, t_list **list_b);
 void	sort_3(t_list **list_a);
 void	add_a(t_list *push_node, t_list **list_b, t_list **list_a);
-
+void	min_ontop(t_list **list);
 
 
 

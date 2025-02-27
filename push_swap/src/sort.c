@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/25 11:06:41 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:48:52 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ void	add_b(t_list *push_node, t_list **list_b, t_list **list_a)
 	int	pos_a;
 	int	pos_b;
 
-	pos_a = pos_target(push_node, *list_a);
-	pos_b = pos_target(push_node->target, *list_b);
-	reverse_a(pos_a, list_a);
-	reverse_b(pos_b, list_b);
+	pos_a = pos_target(*list_a, push_node);
+	pos_b = pos_target(*list_b, push_node->target);
+	if (pos_a != 0)
+		reverse_a(pos_a, list_a);
+	if (pos_b != 0)
+		reverse_b(pos_b, list_b);
 	pb(list_a, list_b);
 }
 
@@ -78,6 +80,26 @@ void	sort_b(t_list **list_a, t_list **list_b)
 	}
 }
 
+void	min_ontop(t_list **list)
+{
+	t_list	*current_a;
+	t_list	*smaller_node;
+	int		smaller_value;
+
+	current_a = *list;
+	smaller_value = current_a->nb;
+	while (current_a != NULL)
+	{
+		if (smaller_value > current_a->nb)
+		{
+			smaller_value = current_a->nb;
+			smaller_node = current_a;
+		}
+		current_a = current_a->next;
+	}
+	reverse_a(pos_target(*list, smaller_node), list);
+}
+
 void	sort(t_list **list_a, t_list **list_b)
 {
 	int		size;
@@ -88,7 +110,13 @@ void	sort(t_list **list_a, t_list **list_b)
 		pb(list_a, list_b);
 		pb(list_a, list_b);
 	}
+	else if(size == 3)
+	{
+		sort_3(list_a);
+		return ;
+	}
 	sort_b(list_a, list_b);
-	sort_3(list_a)
+	sort_3(list_a);
 	sort_a(list_a, list_b);
+	min_ontop(list_a);
 }

@@ -1,24 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/26 08:59:30 by artperez          #+#    #+#             */
+/*   Updated: 2025/02/26 15:15:42 by artperez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 
-void	sort_3(t_list **list_a)
-{
-	t_list *current;
-	t_list *last_node;
-	int		bigger_value;
-	
-	if (sort_good(list_a))
-		return;
-	current = *list_a;
-	if (current->nb > current->next->nb && current->nb > current->next->next->nb)
-		sa(list_a);
-	current = *list_a;
-	if (current->next->nb > current->next->next->nb)
-		ra(list_a);
-	current = *list_a;
-	if (current->nb > current->next->nb)
-		sa(list_a);
+void sort_3(t_list **list_a) {
+    t_list *current;
+    
+    if (sort_good(list_a) == true)
+        return;
+    current = *list_a;
+    if (current->nb > current->next->nb &&
+		current->next->nb < current->next->next->nb && current->nb > current->next->next->nb)
+        ra(list_a);
+    else if (current->nb < current->next->nb && current->next->nb > current->next->next->nb && current->nb > current->next->next->nb)
+	{
+        sa(list_a);
+        rra(list_a);
+    } 
+	else if (current->nb > current->next->nb && current->next->nb < current->next->next->nb)
+        sa(list_a);
+    else if (current->nb < current->next->nb &&
+		current->next->nb > current->next->next->nb && current->nb < current->next->next->nb)
+	{
+        sa(list_a);
+        ra(list_a);
+    }
+    else if (current->nb > current->next->nb && current->next->nb > current->next->next->nb)
+	{
+        sa(list_a);
+        rra(list_a);
+    }
 }
 
 void	target(t_list **list_a, t_list **list_b)
@@ -34,7 +55,7 @@ void	target(t_list **list_a, t_list **list_b)
 		smaller_value = temp_b->nb;
 		while (temp_a != NULL && check_min(temp_a->nb, temp_b, &(temp_a->target)) == 1 && temp_a != NULL)
 		 	temp_a = temp_a->next;
-		while (temp_b != NULL)
+		while (temp_a != NULL && temp_b != NULL)
 		{
 			if (temp_a->nb > temp_b->nb 
 				&& smaller_value > temp_a->nb - temp_b->nb)
@@ -59,7 +80,8 @@ void	add_cheapest(t_list **list_a, t_list **list_b)
 	push_node = *list_a;
 	while (current_a != NULL)
 	{
-		smaller_pc = current_a->push_cost;
+		if (smaller_pc > current_a->push_cost)
+			smaller_pc = current_a->push_cost;
 		if (smaller_pc == 1)
 		{
 			add_b(push_node, list_b, list_a);

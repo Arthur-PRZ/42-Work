@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/18 13:45:12 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:46:16 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	ft_taking_list(argv, &list_a, argc);
-	if (sort_good(&list_a) == 0)
+	if (sort_good(&list_a) == true)
 		return (1);
 	sort(&list_a, &list_b);
-	printf("%d", list_a->nb);
 }

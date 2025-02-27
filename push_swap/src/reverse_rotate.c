@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 09:23:42 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/13 09:50:42 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:04:07 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 void	reverse_rotate(t_list **list)
 {
 	t_list	*last;
-	t_list	*second;
-	
+	t_list	*second_last;
+
+	if (*list == NULL || (*list)->next == NULL)
+		return;
 	last = *list;
-	second = (*list)->next;
 	while (last->next != NULL)
 		last = last->next;
-	ft_lstadd_front_ps(list, last);
-	last->next = NULL;
+	second_last = *list;
+	while (second_last->next != last)
+		second_last = second_last->next;
+	second_last->next = NULL;
+	last->next = *list;
+	*list = last;
 }
 
 void	rra(t_list **list_a)
