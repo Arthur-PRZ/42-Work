@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/27 10:48:52 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:07:41 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	min_ontop(t_list **list)
 
 	current_a = *list;
 	smaller_value = current_a->nb;
+	smaller_node = current_a;
 	while (current_a != NULL)
 	{
 		if (smaller_value > current_a->nb)
@@ -110,9 +111,16 @@ void	sort(t_list **list_a, t_list **list_b)
 		pb(list_a, list_b);
 		pb(list_a, list_b);
 	}
+	else if(size == 4)
+		pb(list_a, list_b);
 	else if(size == 3)
 	{
 		sort_3(list_a);
+		return ;
+	}
+	else if (size == 2)
+	{
+		sa(list_a);
 		return ;
 	}
 	sort_b(list_a, list_b);

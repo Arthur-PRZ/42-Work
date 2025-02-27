@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 10:37:02 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/26 15:26:02 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:30:52 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	get_pcost_back(t_list **list_a, t_list **list_b)
 	int		size_b;
 	t_list *current_b;
 
+	if (*list_b == NULL)
+		return ;
 	size_a = ft_lstsize_ps(*list_a);
 	size_b = ft_lstsize_ps(*list_b);
 	current_b = *list_b;
@@ -67,6 +69,7 @@ void	add_cheapest_back(t_list **list_a, t_list **list_b)
 
 	current_b = *list_b;
 	push_node = *list_b;
+	smaller_pc = current_b->push_cost;
 	while (current_b != NULL)
 	{
 		if (smaller_pc > current_b->push_cost)
