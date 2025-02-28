@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/27 10:33:00 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:22:56 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ list_a, int argc);
 t_list	*ft_lstnew_ps(int content);
 void	ft_lstadd_back_ps(t_list **lst, t_list *new);
 void	check_list(t_list **list_a, char *str, char **tab);
-void	error_argument(t_list **list_a, char **tab);
+void	free_all(t_list **list_a, char **tab);
 void	check_duplicate(t_list **list_a, char **tab);
 void	sa(t_list **list);
 void	sb(t_list **list);

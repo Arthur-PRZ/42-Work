@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/27 11:19:28 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:25:56 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_taking_list(char **argv, t_list **list_a, int argc)
 			ft_lstadd_back_ps(list_a, new_node);
 		}
 	}
+	free_all(NULL, tab);
 	check_duplicate(list_a, tab);
 }
 
@@ -71,8 +72,9 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	ft_taking_list(argv, &list_a, argc);
-	if (sort_good(&list_a) == true)
+	if (sort_good(&list_a) == true || ft_lstsize_ps(list_a) == 1)
 		return (1);
 	sort(&list_a, &list_b);
+	free_all(&list_a, NULL);
 	printf("%d", list_a->nb);
 }

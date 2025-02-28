@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/18 10:01:57 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:24:43 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_list	*ft_lstnew_ps(int content)
 		return (NULL);
 	list->nb = content;
 	list->next = NULL;
+	list->target = NULL;
+	list->push_cost = 0;
 	return (list);
 }
 
@@ -68,7 +70,7 @@ void	check_list(t_list **list_a, char *str, char **tab)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			error_argument(list_a, tab);
+			free_all(list_a, tab);
 		i++;
 	}
 }

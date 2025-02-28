@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args                                         :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:10:50 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/11 11:30:07 by artperez         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:22:39 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void check_duplicate(t_list **list_a, char **tab)
 		while (i != NULL)
 		{
 			if (number == i->nb)
-				error_argument(list_a, tab);
+			{
+				write(1, "Error\nArguments invalid.\n", 27);
+				free_all(list_a, tab);
+			}
 			i = i->next;
 		}
 		temp = temp->next;
