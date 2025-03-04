@@ -12,13 +12,8 @@
 
 #include "../include/push_swap.h"
 
-void sort_3(t_list **list_a)
+void sort_3(t_list **list_a, t_list *current)
 {
-    t_list *current;
-    
-    if (sort_good(list_a) == true)
-        return;
-    current = *list_a;
     if (current->nb > current->next->nb && 
         current->next->nb < current->next->next->nb && 
         current->nb > current->next->next->nb)
@@ -35,9 +30,7 @@ void sort_3(t_list **list_a)
     else if (current->nb < current->next->nb && 
              current->next->nb > current->next->next->nb && 
              current->nb > current->next->next->nb)
-    {
         rra(list_a);
-    }
     else if (current->nb < current->next->nb && 
              current->next->nb > current->next->next->nb && 
              current->nb < current->next->next->nb)

@@ -18,6 +18,7 @@ LIBFT_PATH = libft/libft.a
 FC = src/main.c \
      src/utils.c \
 	 src/utils2.c \
+	 src/utils3.c \
 	 src/clear.c \
 	 src/push.c \
 	 src/rotate.c \

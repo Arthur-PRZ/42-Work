@@ -29,6 +29,7 @@ char	**set_up_split(char **tab, t_list **list, char *str, char **argv)
 	*list = ft_lstnew_ps(ft_atoi(tab[0]));
 	return (tab);
 }
+
 void	ft_taking_list_split(char **argv, t_list **list_a)
 {
 	int	a;
@@ -110,6 +111,11 @@ int	main(int argc, char **argv)
 	if (sort_good(&list_a) == true || ft_lstsize_ps(list_a) == 1)
 	{
 		free_all(&list_a, NULL);
+		return (1);
+	}
+	else if (ft_lstsize_ps(list_a) == 2)
+	{
+		sa(&list_a);
 		return (1);
 	}
 	sort(&list_a, &list_b);

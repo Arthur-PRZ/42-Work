@@ -12,8 +12,6 @@
 
 #include "../include/push_swap.h"
 
-#include "../include/push_swap.h"
-
 void	push(t_list **sender, t_list **receiver)
 {
 	t_list	*temp;

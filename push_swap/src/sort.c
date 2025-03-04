@@ -38,75 +38,15 @@ void	add_b(t_list *push_node, t_list **list_b, t_list **list_a)
 	int	pos_a;
 	int	pos_b;
 	int		size_b;
-	int		size_a;
 
 	pos_a = pos_target(*list_a, push_node);
 	pos_b = pos_target(*list_b, push_node->target);
-	size_a = ft_lstsize_ps(*list_a);
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_b <= size_b / 2 && pos_a <= size_b / 2)
 		reverse_top(pos_a, pos_b, list_a, list_b);
 	else if (pos_b > size_b / 2 && pos_a > size_b / 2)
 		reverse_bot(pos_a, pos_b, list_a, list_b);
 	pb(list_a, list_b);
-}
-
-int		check_both(int push_cost, t_list **list_b, t_list **list_a, t_list *current_a)
-{
-	int		size_b;
-	int		size_a;
-	int		pos_target_a;
-	int		pos_target_b;
-
-	pos_target_b = pos_target(*list_b, current_a->target);
-	pos_target_a = pos_target(*list_a, current_a);
-	size_a = ft_lstsize_ps(*list_a);
-	size_b = ft_lstsize_ps(*list_b);
-	if (pos_target_b <= size_b / 2 && pos_target_a <= size_b / 2)
-	{
-		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a;
-		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b;
-	}
-	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_b / 2 &&
-		pos_target_b != size_b - 1 && pos_target_a != size_b - 1)
-	{
-		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a;
-		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b;
-	}
-	return (push_cost);
-}
-
-int		check_both_back(int push_cost, t_list **list_b, t_list **list_a, t_list *current_b)
-{
-	int		size_b;
-	int		size_a;
-	int		pos_target_a;
-	int		pos_target_b;
-
-	pos_target_a = pos_target(*list_a, current_b->target);
-	pos_target_b = pos_target(*list_b, current_b);
-	size_a = ft_lstsize_ps(*list_a);
-	size_b = ft_lstsize_ps(*list_b);
-	if (pos_target_b <= size_b / 2 && pos_target_a <= size_b / 2)
-	{
-		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a;
-		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b;
-	}
-	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_b / 2 &&
-		pos_target_b != size_b - 1 && pos_target_a != size_b - 1)
-	{
-		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a;
-		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b;
-	}
-	return (push_cost);
 }
 
 void	get_pcost(t_list **list_a, t_list **list_b)
@@ -167,8 +107,10 @@ void	min_ontop(t_list **list)
 void	sort(t_list **list_a, t_list **list_b)
 {
 	int		size;
-	
+	t_list *current;
+
 	size = ft_lstsize_ps(*list_a);
+	current = *list_a;
 	if (size > 4)
 	{
 		pb(list_a, list_b);
@@ -178,16 +120,13 @@ void	sort(t_list **list_a, t_list **list_b)
 		pb(list_a, list_b);
 	else if(size == 3)
 	{
-		sort_3(list_a);
-		return ;
-	}
-	else if (size == 2)
-	{
-		sa(list_a);
+		sort_3(list_a, current);
 		return ;
 	}
 	sort_b(list_a, list_b);
-	sort_3(list_a);
+	current = *list_a;
+	if (sort_good(list_a) == false)
+		sort_3(list_a, current);
 	sort_a(list_a, list_b);
 	min_ontop(list_a);
 }

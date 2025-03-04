@@ -27,11 +27,9 @@ void	add_a(t_list *push_node, t_list **list_b, t_list **list_a)
 	int	pos_a;
 	int	pos_b;
 	int	size_b;
-	int	size_a;
 
 	pos_a = pos_target(*list_a, push_node->target);
 	pos_b = pos_target(*list_b, push_node);
-	size_a = ft_lstsize_ps(*list_a);
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_b <= size_b / 2 && pos_a <= size_b / 2)
 		reverse_top(pos_a, pos_b, list_a, list_b);

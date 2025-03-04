@@ -25,64 +25,6 @@ int	pos_target(t_list *list, t_list *target)
 	return (pos);
 }
 
-bool	sort_good(t_list **list_a)
-{
-	t_list	*temp;
-	int		value;
-
-	temp = *list_a;
-	while(temp->next != NULL)
-	{
-		value = temp->nb;
-		temp = temp->next;
-		if (value > temp->nb)
-			return (false);
-	}
-	return (true);
-}
-
-int		check_min(int nb, t_list *list, t_list **add_target)
-{
-	t_list	*bigger_value;
-	t_list	*current;
-	int		bigger_b;
-	
-	bigger_b = -1;
-	bigger_value = NULL;
-	current = list;
-    while (current != NULL)
-    {
-        if (current->nb < nb)
-            return 0;
-        current = current->next;
-    }
-	while(list != NULL) 
-	{
-		if (list->nb > bigger_b && nb < list->nb)
-		{
-			bigger_b = list->nb;
-			bigger_value = list;
-		}
-		list = list->next;
-	}
-    *add_target = bigger_value;
-    return (1);
-}
-
-int	pc(int pos, int size)
-{
-	int	push_cost;
-	int	mid_size;
-
-	mid_size = size / 2;
-	push_cost = 0;
-	if (pos < mid_size || pos == mid_size)
-		push_cost = pos;
-	else if (pos > mid_size)
-		push_cost = pos - mid_size;
-	return (push_cost);
-}
-
 void	reverse_top(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 {
 	int	size_a;

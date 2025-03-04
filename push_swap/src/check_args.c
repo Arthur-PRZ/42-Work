@@ -35,6 +35,7 @@ void check_duplicate(t_list **list_a, char **tab)
 		temp = temp->next;
 	}
 }
+
 int	ft_strlen_int(int nbr)
 {
 	int	i;
@@ -74,10 +75,8 @@ char	*ft_itoa(int nbr)
 	int		i;
 	char	*str;
 	int		s;
-	int		a;
 
 	i = 0;
-	a = 0;
 	i = ft_strlen_int(nbr);
 	str = malloc((i + 1) * sizeof(char));
 	str[i] = '\0';

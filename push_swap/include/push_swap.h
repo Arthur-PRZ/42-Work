@@ -66,7 +66,7 @@ void	get_pcost_back(t_list **list_a, t_list **list_b);
 void	sort_a(t_list **list_a, t_list **list_b);
 void	add_cheapest_back(t_list **list_a, t_list **list_b);
 void	target_back(t_list **list_a, t_list **list_b);
-void	sort_3(t_list **list_a);
+void	sort_3(t_list **list_a, t_list *current);
 void	add_a(t_list *push_node, t_list **list_b, t_list **list_a);
 void	min_ontop(t_list **list);
 int		ft_strlen_int(int nbr);
