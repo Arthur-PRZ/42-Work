@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 10:37:02 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/28 09:11:31 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:52:43 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ void	add_a(t_list *push_node, t_list **list_b, t_list **list_a)
 {
 	int	pos_a;
 	int	pos_b;
-	
+	int	size_b;
+	int	size_a;
+
 	pos_a = pos_target(*list_a, push_node->target);
 	pos_b = pos_target(*list_b, push_node);
-	if (pos_a != 0)
-		reverse_a(pos_a, list_a);
-	if (pos_b != 0)
-		reverse_b(pos_b, list_b);
+	size_a = ft_lstsize_ps(*list_a);
+	size_b = ft_lstsize_ps(*list_b);
+	if (pos_b <= size_b / 2 && pos_a <= size_b / 2)
+		reverse_top(pos_a, pos_b, list_a, list_b);
+	if (pos_b > size_b / 2 && pos_a > size_b / 2)
+		reverse_bot(pos_a, pos_b, list_a, list_b);
 	pa(list_a, list_b);
 }
 
@@ -53,6 +57,7 @@ void	get_pcost_back(t_list **list_a, t_list **list_b)
 		push_cost = 0;
 		push_cost = pc(pos_target(*list_a, current_b->target), size_a)
 		 	+ pc(pos_target(*list_b, current_b), size_b);
+		push_cost = check_both_back(push_cost, list_b, list_a, current_b);
 		push_cost++;
 		current_b->push_cost = push_cost;
 		if (push_cost == 1)
@@ -73,17 +78,20 @@ void	add_cheapest_back(t_list **list_a, t_list **list_b)
 	while (current_b != NULL)
 	{
 		if (smaller_pc > current_b->push_cost)
+		{
 			smaller_pc = current_b->push_cost;
+			push_node = current_b;
+		}	
 		if (smaller_pc == 1)
 		{
 			add_a(push_node, list_b, list_a);
 			return ;
 		}
-		if (smaller_pc > current_b->push_cost)
-		{
-			smaller_pc = current_b->push_cost;
-			push_node = current_b;
-		}
+		// if (smaller_pc > current_b->push_cost)
+		// {
+		// 	smaller_pc = current_b->push_cost;
+		// 	push_node = current_b;
+		// }
 		current_b = current_b->next;
 	}
 	add_a(push_node, list_b, list_a);

@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/28 09:22:56 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:21:42 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_list
 	int	push_cost;
 } t_list;
 
-void	ft_taking_list(char **argv, t_list **
-list_a, int argc);
+void	ft_taking_list_split(char **argv, t_list **list_a);
+void	ft_taking_list(char **argv, t_list **list_a);
 t_list	*ft_lstnew_ps(int content);
 void	ft_lstadd_back_ps(t_list **lst, t_list *new);
 void	check_list(t_list **list_a, char *str, char **tab);
@@ -69,11 +69,15 @@ void	target_back(t_list **list_a, t_list **list_b);
 void	sort_3(t_list **list_a);
 void	add_a(t_list *push_node, t_list **list_b, t_list **list_a);
 void	min_ontop(t_list **list);
-
-
-
-
-
-
+int		ft_strlen_int(int nbr);
+char	*ft_itoa(int nbr);
+bool	ft_same(char *str1, char *str2);
+char	**set_up_split(char **tab, t_list **list, char *str, char **argv);
+void	set_up_taking(t_list **list, char **argv, char *str);
+void 	exit_error(t_list **list, char **tab, char *str);
+int		check_both(int push_cost, t_list **list_b, t_list **list_a, t_list *current_a);
+void	reverse_bot(int pos_a, int pos_b, t_list **list_a, t_list **list_b);
+void	reverse_top(int pos_a, int pos_b, t_list **list_a, t_list **list_b);
+int		check_both_back(int push_cost, t_list **list_b, t_list **list_a, t_list *current_b);
 
 #endif

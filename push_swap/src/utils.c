@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/28 09:24:43 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:45:14 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	check_list(t_list **list_a, char *str, char **tab)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
+		{
+			write(2, "Error\n", 6);
 			free_all(list_a, tab);
+		}
 		i++;
 	}
 }

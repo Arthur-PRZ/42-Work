@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:41:54 by artperez          #+#    #+#             */
-/*   Updated: 2025/01/15 13:01:18 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/03 10:03:00 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,6 @@ int	ft_putstr_len(char *s)
 		i++;
 	}
 	return (ft_strlen_printf(s));
-}
-
-int	ft_strlen_int(int nbr)
-{
-	int	i;
-
-	i = 1;
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		i++;
-	}
-	while (nbr >= 10)
-	{
-		i++;
-		nbr = nbr / 10;
-	}
-	return (i);
 }
 
 size_t	ft_strlen_printf(const char *s)

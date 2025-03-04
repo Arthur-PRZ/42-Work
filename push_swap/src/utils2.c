@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 08:59:18 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/26 15:50:30 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:07:36 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,75 @@ int	pc(int pos, int size)
 	return (push_cost);
 }
 
+void	reverse_top(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
+{
+	int	size_a;
+	int	size_b;
+	
+	size_a = ft_lstsize_ps(*list_a);
+	size_b = ft_lstsize_ps(*list_b);
+	if (pos_a <= size_a / 2 && pos_b <= size_b / 2)
+	{
+		while (pos_a != 0 && pos_b != 0)
+		{
+			rr(list_a, list_b);
+			pos_a--;
+			pos_b--;
+		}
+	}
+	while (pos_a != 0 && pos_a <= size_a / 2)
+	{
+		ra(list_a);
+		pos_a--;
+	}
+	while (pos_b != 0 && pos_b <= size_b / 2)
+	{
+		rb(list_b);
+		pos_b--;
+	}
+}
+
+void	reverse_bot(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
+{
+	int	size_a;
+	int	size_b;
+	
+	size_a = ft_lstsize_ps(*list_a);
+	size_b = ft_lstsize_ps(*list_b);
+	if (pos_a > size_a / 2 && pos_b > size_b / 2)
+	{
+		while (pos_a != size_a - 1 && pos_b != size_b - 1)
+		{
+			rrr(list_a, list_b);
+			pos_a++;
+			pos_b++;
+		}
+	}
+	while (pos_a != size_a - 1 && pos_a > size_a / 2)
+	{
+		rra(list_a);
+		pos_a++;
+	}
+	while (pos_b != size_b - 1 && pos_b > size_b / 2)
+	{
+		rrb(list_b);
+		pos_b++;
+	}
+}
+
+void	reverse(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
+{
+	int	size_a;
+	int	size_b;
+	
+	size_a = ft_lstsize_ps(*list_a);
+	size_b = ft_lstsize_ps(*list_b);
+	if (pos_a <= size_a / 2 || pos_b <= size_b / 2)
+		reverse_top(pos_a, pos_b, list_a, list_b);
+	else if (pos_a > size_a / 2 || pos_b > size_b / 2)
+		reverse_bot(pos_a, pos_b, list_a, list_b);
+}
+
 void	reverse_a(int pos_a, t_list **list_a)
 {
 	int	size;
@@ -107,26 +176,26 @@ void	reverse_a(int pos_a, t_list **list_a)
 	}
 }
 
-void	reverse_b(int pos_b, t_list **list_b)
-{
-	int	size;
+// void	reverse_b(int pos_b, t_list **list_b)
+// {
+// 	int	size;
 	
-	size = ft_lstsize_ps(*list_b);
-	if (pos_b < size / 2 || pos_b == size / 2)
-	{
-		while (pos_b != 0)
-		{
-			rb(list_b);
-			pos_b--;
-		}
-	}
-	else if (pos_b > size / 2)
-	{
-		while (pos_b < size - 1)
-		{
-			rrb(list_b);
-			pos_b++;
-		}
-		rrb(list_b);
-	}
-}
+// 	size = ft_lstsize_ps(*list_b);
+// 	if (pos_b < size / 2 || pos_b == size / 2)
+// 	{
+// 		while (pos_b != 0)
+// 		{
+// 			rb(list_b);
+// 			pos_b--;
+// 		}
+// 	}
+// 	else if (pos_b > size / 2)
+// 	{
+// 		while (pos_b < size - 1)
+// 		{
+// 			rrb(list_b);
+// 			pos_b++;
+// 		}
+// 		rrb(list_b);
+// 	}
+// }

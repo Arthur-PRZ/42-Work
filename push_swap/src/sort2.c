@@ -6,39 +6,44 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 08:59:30 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/26 15:15:42 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:52:20 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-
-void sort_3(t_list **list_a) {
+void sort_3(t_list **list_a)
+{
     t_list *current;
     
     if (sort_good(list_a) == true)
         return;
     current = *list_a;
-    if (current->nb > current->next->nb &&
-		current->next->nb < current->next->next->nb && current->nb > current->next->next->nb)
+    if (current->nb > current->next->nb && 
+        current->next->nb < current->next->next->nb && 
+        current->nb > current->next->next->nb)
         ra(list_a);
-    else if (current->nb < current->next->nb && current->next->nb > current->next->next->nb && current->nb > current->next->next->nb)
-	{
+    else if (current->nb > current->next->nb && 
+             current->next->nb > current->next->next->nb)
+    {
         sa(list_a);
         rra(list_a);
-    } 
-	else if (current->nb > current->next->nb && current->next->nb < current->next->next->nb)
-        sa(list_a);
-    else if (current->nb < current->next->nb &&
-		current->next->nb > current->next->next->nb && current->nb < current->next->next->nb)
-	{
-        sa(list_a);
-        ra(list_a);
     }
-    else if (current->nb > current->next->nb && current->next->nb > current->next->next->nb)
-	{
+    else if (current->nb > current->next->nb && 
+             current->next->nb < current->next->next->nb)
         sa(list_a);
+    else if (current->nb < current->next->nb && 
+             current->next->nb > current->next->next->nb && 
+             current->nb > current->next->next->nb)
+    {
         rra(list_a);
+    }
+    else if (current->nb < current->next->nb && 
+             current->next->nb > current->next->next->nb && 
+             current->nb < current->next->next->nb)
+    {
+        sa(list_a);
+        ra(list_a);
     }
 }
 
@@ -78,20 +83,24 @@ void	add_cheapest(t_list **list_a, t_list **list_b)
 
 	current_a = *list_a;
 	push_node = *list_a;
+	smaller_pc = current_a->nb;
 	while (current_a != NULL)
 	{
 		if (smaller_pc > current_a->push_cost)
+		{
 			smaller_pc = current_a->push_cost;
+			push_node = current_a;
+		}	
 		if (smaller_pc == 1)
 		{
 			add_b(push_node, list_b, list_a);
 			return ;
 		}
-		if (smaller_pc > current_a->push_cost)
-		{
-			smaller_pc = current_a->push_cost;
-			push_node = current_a;
-		}
+		// if (smaller_pc > current_a->push_cost)
+		// {
+		// 	smaller_pc = current_a->push_cost;
+		// 	push_node = current_a;
+		// }
 		current_a = current_a->next;
 	}
 	add_b(push_node, list_b, list_a);

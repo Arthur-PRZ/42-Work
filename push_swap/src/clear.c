@@ -6,11 +6,19 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:23:00 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/28 09:35:47 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/03 16:53:56 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void exit_error(t_list **list, char **tab, char *str)
+{
+	write(2, "Error\n", 6);
+	if (str != NULL)
+		free(str);
+	free_all(list, tab);
+}
 
 void free_all(t_list **list, char **tab)
 {
@@ -28,7 +36,7 @@ void free_all(t_list **list, char **tab)
 		}
 		free(tab);
 	}
-	if (list != NULL && *list != NULL)
+	if (list != NULL)
 	{
 		temp = *list;
 		while(temp != NULL)
@@ -37,7 +45,7 @@ void free_all(t_list **list, char **tab)
 			free(temp);
 			temp = next;
 		}
+		exit (1);
 	}
-	exit (1);
 }
 

@@ -6,35 +6,43 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 10:39:03 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/18 14:21:59 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:33:03 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push(t_list **list_taking, t_list **list_giving)
-{
-	t_list	*first;
+#include "../include/push_swap.h"
 
-	if (*list_giving == NULL)
-        return;
-	first = *list_giving;
-	*list_giving = (*list_giving)->next;
-	if (*list_taking == NULL)
-		first->next = NULL;
+void	push(t_list **sender, t_list **receiver)
+{
+	t_list	*temp;
+
+	if (!*sender)
+		return ;
+	temp = *sender;
+	*sender = (*sender)->next;
+
+	if (!*receiver)
+	{
+		*receiver = temp;
+		temp->next = NULL;
+	}
 	else
-		first->next = *list_taking;
-	*list_taking = first;
+	{
+		temp->next = *receiver;
+		*receiver = temp;
+	}
 }
 
-void	pa(t_list **list_a, t_list **list_b)
+void	pa(t_list **a, t_list **b)
 {
-	printf("pa\n");
-	push(list_a, list_b);
+	push(b, a);
+	ft_printf("pa\n");
 }
 
-void	pb(t_list **list_a, t_list **list_b)
+void	pb(t_list **a, t_list **b)
 {
-	printf("pb\n");
-	push(list_b, list_a);
+	push(a, b);
+	ft_printf("pb\n");
 }
