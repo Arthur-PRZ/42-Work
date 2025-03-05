@@ -55,33 +55,36 @@ int	pc(int pos, int size)
 	if (pos < mid_size || pos == mid_size)
 		push_cost = pos;
 	else if (pos > mid_size)
-		push_cost = pos - mid_size;
+		push_cost = size - pos;
 	return (push_cost);
 }
 
 int		check_both(int push_cost, t_list **list_b, t_list **list_a, t_list *current_a)
 {
 	int		size_b;
+	int		size_a;
 	int		pos_target_a;
 	int		pos_target_b;
 
 	pos_target_b = pos_target(*list_b, current_a->target);
 	pos_target_a = pos_target(*list_a, current_a);
 	size_b = ft_lstsize_ps(*list_b);
-	if (pos_target_b <= size_b / 2 && pos_target_a <= size_b / 2)
+	size_a = ft_lstsize_ps(*list_a);
+	if (pos_target_b <= size_b / 2 && pos_target_a <= size_a / 2 &&
+		pos_target_b != 0 && pos_target_a != 0)
 	{
 		if (pos_target_b > pos_target_a)
 			push_cost = push_cost - pos_target_a;
 		else if (pos_target_b < pos_target_a)
 			push_cost = push_cost - pos_target_b;
 	}
-	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_b / 2 &&
-		pos_target_b != size_b - 1 && pos_target_a != size_b - 1)
+	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_a / 2 &&
+		pos_target_b != size_b - 1 && pos_target_a != size_a - 1)
 	{
 		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a;
+			push_cost = push_cost - size_a - pos_target_a;
 		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b;
+			push_cost = push_cost - (size_b - pos_target_b);
 	}
 	return (push_cost);
 }
@@ -89,26 +92,30 @@ int		check_both(int push_cost, t_list **list_b, t_list **list_a, t_list *current
 int		check_both_back(int push_cost, t_list **list_b, t_list **list_a, t_list *current_b)
 {
 	int		size_a;
+	int		size_b;
 	int		pos_target_a;
 	int		pos_target_b;
 
 	pos_target_a = pos_target(*list_a, current_b->target);
 	pos_target_b = pos_target(*list_b, current_b);
 	size_a = ft_lstsize_ps(*list_a);
-	if (pos_target_b <= size_a / 2 && pos_target_a <= size_a / 2)
+	size_b = ft_lstsize_ps(*list_b);
+	if (pos_target_b <= size_b / 2 && pos_target_a <= size_a / 2 &&
+		pos_target_b != 0 && pos_target_a != 0)
+
 	{
 		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a + size_a / 2;
+			push_cost = push_cost - pos_target_a;
 		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b + size_a / 2;
+			push_cost = push_cost - pos_target_b;
 	}
-	else if (pos_target_b >= size_a / 2 && pos_target_a >= size_a / 2 &&
-		pos_target_b != size_a - 1 && pos_target_a != size_a - 1)
+	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_a / 2 &&
+		pos_target_b != size_b - 1 && pos_target_a -1 != size_a)
 	{
 		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - pos_target_a + size_a / 2;
+			push_cost = push_cost - (size_a - pos_target_a);
 		else if (pos_target_b < pos_target_a)
-			push_cost = push_cost - pos_target_b + size_a / 2;
+			push_cost = push_cost - (size_b - pos_target_b);
 	}
 	return (push_cost);
 }

@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 08:59:18 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/04 11:07:36 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:37:49 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ void	reverse_top(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_a <= size_a / 2 && pos_b <= size_b / 2)
 	{
-		while (pos_a != 0 && pos_b != 0)
+		while (pos_a > 0 && pos_b > 0)
 		{
 			rr(list_a, list_b);
 			pos_a--;
 			pos_b--;
 		}
 	}
-	while (pos_a != 0 && pos_a <= size_a / 2)
+	while (pos_a > 0 && pos_a <= size_a / 2)
 	{
 		ra(list_a);
 		pos_a--;
 	}
-	while (pos_b != 0 && pos_b <= size_b / 2)
+	while (pos_b > 0 && pos_b <= size_b / 2)
 	{
 		rb(list_b);
 		pos_b--;
@@ -62,19 +62,19 @@ void	reverse_bot(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_a > size_a / 2 && pos_b > size_b / 2)
 	{
-		while (pos_a != size_a - 1 && pos_b != size_b - 1)
+		while (pos_a < size_a - 1 && pos_b < size_b - 1)
 		{
 			rrr(list_a, list_b);
 			pos_a++;
 			pos_b++;
 		}
 	}
-	while (pos_a != size_a - 1 && pos_a > size_a / 2)
+	while (pos_a != size_a && pos_a > size_a / 2)
 	{
 		rra(list_a);
 		pos_a++;
 	}
-	while (pos_b != size_b - 1 && pos_b > size_b / 2)
+	while (pos_b < size_b && pos_b > size_b / 2)
 	{
 		rrb(list_b);
 		pos_b++;

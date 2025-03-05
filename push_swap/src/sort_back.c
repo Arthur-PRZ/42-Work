@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 10:37:02 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/04 10:52:43 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:00:45 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void	add_a(t_list *push_node, t_list **list_b, t_list **list_a)
 	pos_a = pos_target(*list_a, push_node->target);
 	pos_b = pos_target(*list_b, push_node);
 	size_b = ft_lstsize_ps(*list_b);
-	if (pos_b <= size_b / 2 && pos_a <= size_b / 2)
-		reverse_top(pos_a, pos_b, list_a, list_b);
-	if (pos_b > size_b / 2 && pos_a > size_b / 2)
-		reverse_bot(pos_a, pos_b, list_a, list_b);
+	reverse_top(pos_a, pos_b, list_a, list_b);
+	reverse_bot(pos_a, pos_b, list_a, list_b);
 	pa(list_a, list_b);
 }
 
@@ -110,8 +108,7 @@ void	target_back(t_list **list_a, t_list **list_b)
 		 	temp_b = temp_b->next;
 		while (temp_a != NULL && temp_b != NULL)
 		{
-			if (temp_a->nb > temp_b->nb 
-				&& closest_bigger > temp_a->nb - temp_b->nb)
+			if (temp_a->nb > temp_b->nb && closest_bigger > temp_a->nb - temp_b->nb)
 			{
 				closest_bigger = temp_a->nb - temp_b->nb;
 				temp_b->target = temp_a;

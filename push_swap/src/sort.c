@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:00:32 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/04 11:59:45 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:49:53 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	add_b(t_list *push_node, t_list **list_b, t_list **list_a)
 	pos_a = pos_target(*list_a, push_node);
 	pos_b = pos_target(*list_b, push_node->target);
 	size_b = ft_lstsize_ps(*list_b);
-	if (pos_b <= size_b / 2 && pos_a <= size_b / 2)
-		reverse_top(pos_a, pos_b, list_a, list_b);
-	else if (pos_b > size_b / 2 && pos_a > size_b / 2)
-		reverse_bot(pos_a, pos_b, list_a, list_b);
+	reverse_top(pos_a, pos_b, list_a, list_b);
+	reverse_bot(pos_a, pos_b, list_a, list_b);
 	pb(list_a, list_b);
 }
 
@@ -107,7 +105,7 @@ void	min_ontop(t_list **list)
 void	sort(t_list **list_a, t_list **list_b)
 {
 	int		size;
-	t_list *current;
+	t_list	*current;
 
 	size = ft_lstsize_ps(*list_a);
 	current = *list_a;

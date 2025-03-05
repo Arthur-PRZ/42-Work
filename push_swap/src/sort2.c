@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 08:59:30 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/04 10:52:20 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:58:23 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	target(t_list **list_a, t_list **list_b)
 	{
 		temp_b = *list_b;
 		smaller_value = temp_b->nb;
-		while (temp_a != NULL && check_min(temp_a->nb, temp_b, &(temp_a->target)) == 1 && temp_a != NULL)
+		while (temp_a != NULL && check_min(temp_a->nb, temp_b, &(temp_a->target)) == 1)
 		 	temp_a = temp_a->next;
 		while (temp_a != NULL && temp_b != NULL)
 		{
@@ -76,7 +76,7 @@ void	add_cheapest(t_list **list_a, t_list **list_b)
 
 	current_a = *list_a;
 	push_node = *list_a;
-	smaller_pc = current_a->nb;
+	smaller_pc = current_a->push_cost;
 	while (current_a != NULL)
 	{
 		if (smaller_pc > current_a->push_cost)
