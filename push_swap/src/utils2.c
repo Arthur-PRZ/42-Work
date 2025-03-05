@@ -62,7 +62,7 @@ void	reverse_bot(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_a > size_a / 2 && pos_b > size_b / 2)
 	{
-		while (pos_a < size_a - 1 && pos_b < size_b - 1)
+		while (pos_a < size_a && pos_b < size_b)
 		{
 			rrr(list_a, list_b);
 			pos_a++;

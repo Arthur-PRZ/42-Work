@@ -81,9 +81,9 @@ int		check_both(int push_cost, t_list **list_b, t_list **list_a, t_list *current
 	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_a / 2 &&
 		pos_target_b != size_b - 1 && pos_target_a != size_a - 1)
 	{
-		if (pos_target_b > pos_target_a)
-			push_cost = push_cost - size_a - pos_target_a;
-		else if (pos_target_b < pos_target_a)
+		if (size_b - pos_target_b > size_a - pos_target_a)
+			push_cost = push_cost - (size_a - pos_target_a);
+		else if (size_b - pos_target_b < size_a - pos_target_a)
 			push_cost = push_cost - (size_b - pos_target_b);
 	}
 	return (push_cost);
@@ -102,7 +102,6 @@ int		check_both_back(int push_cost, t_list **list_b, t_list **list_a, t_list *cu
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_target_b <= size_b / 2 && pos_target_a <= size_a / 2 &&
 		pos_target_b != 0 && pos_target_a != 0)
-
 	{
 		if (pos_target_b > pos_target_a)
 			push_cost = push_cost - pos_target_a;
@@ -110,11 +109,11 @@ int		check_both_back(int push_cost, t_list **list_b, t_list **list_a, t_list *cu
 			push_cost = push_cost - pos_target_b;
 	}
 	else if (pos_target_b >= size_b / 2 && pos_target_a >= size_a / 2 &&
-		pos_target_b != size_b - 1 && pos_target_a -1 != size_a)
+		pos_target_b != size_b - 1 && pos_target_a - 1 != size_a)
 	{
-		if (pos_target_b > pos_target_a)
+		if (size_b - pos_target_b > size_a - pos_target_a)
 			push_cost = push_cost - (size_a - pos_target_a);
-		else if (pos_target_b < pos_target_a)
+		else if (size_b - pos_target_b < size_a - pos_target_a)
 			push_cost = push_cost - (size_b - pos_target_b);
 	}
 	return (push_cost);
