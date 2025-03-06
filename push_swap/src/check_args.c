@@ -6,18 +6,18 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:10:50 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/03 16:07:41 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:12:56 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void check_duplicate(t_list **list_a, char **tab)
+void	check_duplicate(t_list **list_a, char **tab)
 {
 	int		number;
-	t_list *temp;
-	t_list *i;
-	
+	t_list	*temp;
+	t_list	*i;
+
 	temp = *list_a;
 	while (temp != NULL)
 	{
@@ -26,10 +26,7 @@ void check_duplicate(t_list **list_a, char **tab)
 		while (i != NULL)
 		{
 			if (number == i->nb)
-			{
-				write(2, "Error\n", 6);
-				free_all(list_a, tab);
-			}
+				exit_error(list_a, tab, NULL);
 			i = i->next;
 		}
 		temp = temp->next;
@@ -70,6 +67,29 @@ bool	ft_same(char *str1, char *str2)
 	return (true);
 }
 
+char	*ft_malloc(int nbr)
+{
+	char	*str;
+
+	if (nbr == 0)
+	{
+		str = ft_calloc(2, sizeof(char));
+		if (str == NULL)
+			return (NULL);
+		str[0] = '0';
+		return (str);
+	}
+	else if (nbr == INT_MIN)
+	{
+		str = ft_calloc(12, sizeof(char));
+		if (str == NULL)
+			return (NULL);
+		str = "-2147483648";
+		return (str);
+	}
+	return (NULL);
+}
+
 char	*ft_itoa(int nbr)
 {
 	int		i;
@@ -78,6 +98,8 @@ char	*ft_itoa(int nbr)
 
 	i = 0;
 	i = ft_strlen_int(nbr);
+	if (nbr == 0)
+		return (ft_malloc(nbr));
 	str = malloc((i + 1) * sizeof(char));
 	str[i] = '\0';
 	if (nbr < 0)
@@ -85,7 +107,7 @@ char	*ft_itoa(int nbr)
 		str[0] = '-';
 		nbr = nbr * (-1);
 	}
-	while(nbr != 0)
+	while (nbr != 0)
 	{
 		s = nbr % 10;
 		str[i - 1] = s + 48;

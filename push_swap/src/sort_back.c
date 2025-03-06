@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 10:37:02 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/05 10:00:45 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:10:09 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_pcost_back(t_list **list_a, t_list **list_b)
 	int		push_cost;
 	int		size_a;
 	int		size_b;
-	t_list *current_b;
+	t_list	*current_b;
 
 	if (*list_b == NULL)
 		return ;
@@ -52,7 +52,7 @@ void	get_pcost_back(t_list **list_a, t_list **list_b)
 	{
 		push_cost = 0;
 		push_cost = pc(pos_target(*list_a, current_b->target), size_a)
-		 	+ pc(pos_target(*list_b, current_b), size_b);
+			+ pc(pos_target(*list_b, current_b), size_b);
 		push_cost = check_both_back(push_cost, list_b, list_a, current_b);
 		push_cost++;
 		current_b->push_cost = push_cost;
@@ -77,17 +77,12 @@ void	add_cheapest_back(t_list **list_a, t_list **list_b)
 		{
 			smaller_pc = current_b->push_cost;
 			push_node = current_b;
-		}	
+		}
 		if (smaller_pc == 1)
 		{
 			add_a(push_node, list_b, list_a);
 			return ;
 		}
-		// if (smaller_pc > current_b->push_cost)
-		// {
-		// 	smaller_pc = current_b->push_cost;
-		// 	push_node = current_b;
-		// }
 		current_b = current_b->next;
 	}
 	add_a(push_node, list_b, list_a);
@@ -95,20 +90,22 @@ void	add_cheapest_back(t_list **list_a, t_list **list_b)
 
 void	target_back(t_list **list_a, t_list **list_b)
 {
-	t_list *temp_a;
-	t_list *temp_b;
+	t_list	*temp_a;
+	t_list	*temp_b;
 	int		closest_bigger;
-	
+
 	temp_b = *list_b;
 	while (temp_b != NULL)
 	{
 		temp_a = *list_a;
 		closest_bigger = __INT_MAX__;
-		while (temp_b != NULL && check_max(temp_b->nb, temp_a, &(temp_b->target)) == 1)
-		 	temp_b = temp_b->next;
+		while (temp_b != NULL && check_max(temp_b->nb, temp_a,
+				&(temp_b->target)) == 1)
+			temp_b = temp_b->next;
 		while (temp_a != NULL && temp_b != NULL)
 		{
-			if (temp_a->nb > temp_b->nb && closest_bigger > temp_a->nb - temp_b->nb)
+			if (temp_a->nb > temp_b->nb
+				&& closest_bigger > temp_a->nb - temp_b->nb)
 			{
 				closest_bigger = temp_a->nb - temp_b->nb;
 				temp_b->target = temp_a;

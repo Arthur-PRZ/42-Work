@@ -6,24 +6,24 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:28:14 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/04 10:21:42 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:12:52 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
-
-#include "../libft/libft.h"
-#include <stdbool.h>
-
+# define PUSH_SWAP_H
+# include "../libft/libft.h"
+# include <stdbool.h>
 
 typedef struct s_list
 {
-	int	nb;
-	struct s_list *next;
-	struct s_list *target;
-	int	push_cost;
-} t_list;
+	int				nb;
+	int				size_a;
+	int				size_b;
+	struct s_list	*next;
+	struct s_list	*target;
+	int				push_cost;
+}			t_list;
 
 void	ft_taking_list_split(char **argv, t_list **list_a);
 void	ft_taking_list(char **argv, t_list **list_a);
@@ -49,7 +49,7 @@ void	rra(t_list **list_a);
 void	rrr(t_list **list_a, t_list **list_b);
 void	ft_lstadd_front_ps(t_list **lst, t_list *new);
 void	sort(t_list **list_a, t_list **list_b);
-bool		sort_good(t_list **list_a);
+bool	sort_good(t_list **list_a);
 void	sort_list_b(t_list **list);
 void	sort_list_b(t_list **list);
 void	target(t_list **list_a, t_list **list_b);
@@ -74,10 +74,12 @@ char	*ft_itoa(int nbr);
 bool	ft_same(char *str1, char *str2);
 char	**set_up_split(char **tab, t_list **list, char *str, char **argv);
 void	set_up_taking(t_list **list, char **argv, char *str);
-void 	exit_error(t_list **list, char **tab, char *str);
-int		check_both(int push_cost, t_list **list_b, t_list **list_a, t_list *current_a);
+void	exit_error(t_list **list, char **tab, char *str);
+int		check_both(int push_cost, t_list **list_b, t_list **list_a,
+			t_list *current_a);
 void	reverse_bot(int pos_a, int pos_b, t_list **list_a, t_list **list_b);
 void	reverse_top(int pos_a, int pos_b, t_list **list_a, t_list **list_b);
-int		check_both_back(int push_cost, t_list **list_b, t_list **list_a, t_list *current_b);
+int		check_both_back(int push_cost, t_list **list_b,
+			t_list **list_a, t_list *current_b);
 
 #endif

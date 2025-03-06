@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 10:39:03 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/03 15:33:03 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:16:28 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	push(t_list **sender, t_list **receiver)
 		return ;
 	temp = *sender;
 	*sender = (*sender)->next;
-
 	if (!*receiver)
 	{
 		*receiver = temp;

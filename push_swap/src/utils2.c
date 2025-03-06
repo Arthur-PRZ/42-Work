@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 08:59:18 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/05 10:37:49 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:10:18 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	pos_target(t_list *list, t_list *target)
 {
 	int	pos;
-	
+
 	pos = 0;
-	while(list != target && list != NULL)
+	while (list != target && list != NULL)
 	{
 		pos++;
 		list = list->next;
@@ -29,7 +29,7 @@ void	reverse_top(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 {
 	int	size_a;
 	int	size_b;
-	
+
 	size_a = ft_lstsize_ps(*list_a);
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_a <= size_a / 2 && pos_b <= size_b / 2)
@@ -57,7 +57,7 @@ void	reverse_bot(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 {
 	int	size_a;
 	int	size_b;
-	
+
 	size_a = ft_lstsize_ps(*list_a);
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_a > size_a / 2 && pos_b > size_b / 2)
@@ -85,7 +85,7 @@ void	reverse(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 {
 	int	size_a;
 	int	size_b;
-	
+
 	size_a = ft_lstsize_ps(*list_a);
 	size_b = ft_lstsize_ps(*list_b);
 	if (pos_a <= size_a / 2 || pos_b <= size_b / 2)
@@ -97,7 +97,7 @@ void	reverse(int pos_a, int pos_b, t_list **list_a, t_list **list_b)
 void	reverse_a(int pos_a, t_list **list_a)
 {
 	int	size;
-	
+
 	size = ft_lstsize_ps(*list_a);
 	if (pos_a < size / 2 || pos_a == size / 2)
 	{
@@ -117,27 +117,3 @@ void	reverse_a(int pos_a, t_list **list_a)
 		rra(list_a);
 	}
 }
-
-// void	reverse_b(int pos_b, t_list **list_b)
-// {
-// 	int	size;
-	
-// 	size = ft_lstsize_ps(*list_b);
-// 	if (pos_b < size / 2 || pos_b == size / 2)
-// 	{
-// 		while (pos_b != 0)
-// 		{
-// 			rb(list_b);
-// 			pos_b--;
-// 		}
-// 	}
-// 	else if (pos_b > size / 2)
-// 	{
-// 		while (pos_b < size - 1)
-// 		{
-// 			rrb(list_b);
-// 			pos_b++;
-// 		}
-// 		rrb(list_b);
-// 	}
-// }

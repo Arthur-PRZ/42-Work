@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 09:23:42 by artperez          #+#    #+#             */
-/*   Updated: 2025/02/27 10:04:07 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:17:25 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	reverse_rotate(t_list **list)
 	t_list	*second_last;
 
 	if (*list == NULL || (*list)->next == NULL)
-		return;
+		return ;
 	last = *list;
 	while (last->next != NULL)
 		last = last->next;

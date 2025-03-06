@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/03 14:45:14 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:07:19 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,12 @@ int	ft_lstsize_ps(t_list *lst)
 void	check_list(t_list **list_a, char *str, char **tab)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if ((str[i] < '0' || str[i] > '9') && (str[i] != '-'
+				&& str[i + 1] == '-'))
 		{
 			write(2, "Error\n", 6);
 			free_all(list_a, tab);

@@ -6,23 +6,27 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:23:10 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/03 17:32:31 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:16:10 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 char	**set_up_split(char **tab, t_list **list, char *str, char **argv)
-{	
+{
 	tab = ft_split(argv[1], ' ');
+	if (tab[0] == NULL)
+	{
+		free(tab);
+		exit (1);
+	}
 	if (tab == NULL)
 		exit (1);
 	check_list(list, tab[0], tab);
 	str = ft_itoa(ft_atoi(tab[0]));
 	if (ft_same(tab[0], str) != true)
 	{
-		write(2, "Error\n", 6);
-		free(str);
+		exit_error(list, tab, str);
 		exit (1);
 	}
 	free(str);
@@ -32,11 +36,11 @@ char	**set_up_split(char **tab, t_list **list, char *str, char **argv)
 
 void	ft_taking_list_split(char **argv, t_list **list_a)
 {
-	int	a;
+	int		a;
 	char	**tab;
 	char	*str;
 	t_list	*new_node;
-	
+
 	a = 0;
 	str = NULL;
 	tab = NULL;
@@ -54,13 +58,14 @@ void	ft_taking_list_split(char **argv, t_list **list_a)
 		new_node = ft_lstnew_ps(ft_atoi(tab[a]));
 		ft_lstadd_back_ps(list_a, new_node);
 	}
+	check_duplicate(list_a, tab);
 	free_all(NULL, tab);
 }
 
-void set_up_taking(t_list **list, char **argv, char *str)
+void	set_up_taking(t_list **list, char **argv, char *str)
 {
 	check_list(list, argv[1], NULL);
-	str = ft_itoa(ft_atoi(argv[1]));	
+	str = ft_itoa(ft_atoi(argv[1]));
 	if (ft_same(str, argv[1]) != true)
 	{
 		write(2, "Error\n", 6);
@@ -71,12 +76,12 @@ void set_up_taking(t_list **list, char **argv, char *str)
 	free(str);
 }
 
-void ft_taking_list(char **argv, t_list **list_a)
+void	ft_taking_list(char **argv, t_list **list_a)
 {
-	int	a;
+	int		a;
 	char	*str;
 	t_list	*new_node;
-	
+
 	a = 1;
 	str = NULL;
 	set_up_taking(list_a, argv, str);
@@ -86,8 +91,8 @@ void ft_taking_list(char **argv, t_list **list_a)
 		if (argv[a] == NULL)
 			break ;
 		check_list(list_a, argv[a], NULL);
-		str = ft_itoa(ft_atoi(argv[a]));	
-		if (ft_same(str, str) != true)
+		str = ft_itoa(ft_atoi(argv[a]));
+		if (ft_same(str, argv[a]) != true)
 			exit_error(list_a, NULL, str);
 		free(str);
 		new_node = ft_lstnew_ps(ft_atoi(argv[a]));
@@ -102,6 +107,7 @@ int	main(int argc, char **argv)
 	t_list	*list_b;
 
 	list_b = NULL;
+	list_a = NULL;
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
@@ -116,14 +122,10 @@ int	main(int argc, char **argv)
 	else if (ft_lstsize_ps(list_a) == 2)
 	{
 		sa(&list_a);
+		free_all(&list_a, NULL);
 		return (1);
 	}
 	sort(&list_a, &list_b);
-	// while (list_a != NULL)
-	// {
-	// 	printf("nb: %i\n", list_a->nb);
-	// 	list_a = list_a->next;
-	// }
 	free_all(&list_a, NULL);
 	return (1);
 }
