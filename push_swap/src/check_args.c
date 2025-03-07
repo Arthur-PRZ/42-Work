@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:10:50 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/06 11:12:56 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:46:14 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_strlen_int(int nbr)
 	i = 1;
 	if (nbr < 0)
 	{
+		if (nbr == INT_MIN)
+			return (11);
 		nbr *= -1;
 		i++;
 	}
@@ -100,6 +102,8 @@ char	*ft_itoa(int nbr)
 	i = ft_strlen_int(nbr);
 	if (nbr == 0)
 		return (ft_malloc(nbr));
+	if (nbr == INT_MIN)
+		return (ft_strdup("-2147483648"));
 	str = malloc((i + 1) * sizeof(char));
 	str[i] = '\0';
 	if (nbr < 0)
