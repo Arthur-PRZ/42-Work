@@ -5,76 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 11:38:55 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/06 11:07:19 by artperez         ###   ########.fr       */
+/*   Created: 2025/03/11 14:18:35 by artperez          #+#    #+#             */
+/*   Updated: 2025/03/11 15:28:21 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/minitalk.h"
 
-t_list	*ft_lstnew_ps(int content)
+void    Signal(int sigum, void *handler, bool use_siginfo)
 {
-	t_list	*list;
+    struct sigaction    sa;
 
-	list = malloc(sizeof(t_list));
-	if (list == NULL)
-		return (NULL);
-	list->nb = content;
-	list->next = NULL;
-	list->target = NULL;
-	list->push_cost = 0;
-	return (list);
-}
-
-void	ft_lstadd_back_ps(t_list **lst, t_list *new)
-{
-	t_list	*temp;
-
-	temp = *lst;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	while (temp != NULL && temp->next != NULL )
-		temp = temp->next;
-	temp->next = new;
-}
-
-void	ft_lstadd_front_ps(t_list **lst, t_list *new)
-{
-	if (lst == 0 || new == 0)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
-
-int	ft_lstsize_ps(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
-
-void	check_list(t_list **list_a, char *str, char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] < '0' || str[i] > '9') && (str[i] != '-'
-				&& str[i + 1] == '-'))
-		{
-			write(2, "Error\n", 6);
-			free_all(list_a, tab);
-		}
-		i++;
-	}
+    ft_memset(&sa, 0, sizeof(sa));
+    if (use_siginfo)
+    {
+        sa.sa_flags = SA_SIGINFO;
+        sa.sa_sigaction = handler;
+    }
+	else
+		sa.sa_sigaction = handler;
+    sigemptyset(&sa.sa_mask);
+    sigaddset(&sa.sa_mask, SIGUSR1);
+    sigaddset(&sa.sa_mask, SIGUSR2);
+    if (sigaction(sigum, &sa, NULL) == -1)
+    {
+        write(2, "sigaction failed\n", 17);
+        exit(EXIT_FAILURE);
+    }
 }
