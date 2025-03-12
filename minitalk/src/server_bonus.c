@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:12:43 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/12 10:43:02 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:43:54 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
 
 int	main(void)
 {
@@ -42,13 +42,13 @@ void	sigusr_handler(int signum, siginfo_t *info, void *more_info)
 		{
 			write(1, "\n", 1);
 			kill_check(pid_sender, SIGUSR2);
-			c = 0;
 			i = 0;
+			c = 0;
 			return ;
 		}
 		write(1, &c, 1);
-		c = 0;
 		i = 0;
+		c = 0;
 	}
 	kill_check(pid_sender, SIGUSR1);
 }

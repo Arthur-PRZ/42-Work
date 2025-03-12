@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:15:39 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/12 10:30:41 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:31:02 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
 
 volatile sig_atomic_t	g_sending = NOT_READY;
 
@@ -23,6 +23,7 @@ void	next_handler(int signum)
 void	end_handler(int signum)
 {
 	(void)signum;
+	ft_printf("Message received\n");
 	exit (EXIT_SUCCESS);
 }
 
