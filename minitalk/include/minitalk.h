@@ -6,13 +6,14 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:26:56 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/12 10:25:23 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:01:09 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
+# define _GNU_SOURCE
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/types.h>
@@ -30,5 +31,6 @@ void	send_char(pid_t pid, char c);
 void	sigusr_handler(int signum, siginfo_t *info, void *more_info);
 void	signal_block(int sigum, void *handler, bool use_siginfo);
 void	kill_check(int pid, int signum);
+char	*ft_realloc(char *str1, char c);
 
 #endif

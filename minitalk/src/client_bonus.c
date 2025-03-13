@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:15:39 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/12 10:31:02 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:27:01 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ int	main(int argc, char **argv)
 	int	pid;
 
 	i = 0;
-	if (argc != 3 || argv[2][0] == '\0')
+	if (argc != 3)
 	{
 		write(2, "Error, arguments invalid\n", 25);
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
+	if (pid == -1)
+	{
+		write(2, "Error, pid -1 not allowed\n", 26);
+		return (1);
+	}
 	signal_block(SIGUSR1, next_handler, false);
 	signal_block(SIGUSR2, end_handler, false);
 	while (argv[2][i])
@@ -63,7 +68,7 @@ void	send_char(pid_t pid, char c)
 			kill_check(pid, SIGUSR2);
 		i++;
 		while (g_sending == NOT_READY)
-			usleep(42);
+			usleep(1);
 		g_sending = NOT_READY;
 	}
 }

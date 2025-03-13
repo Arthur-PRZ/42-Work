@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:18:35 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/12 10:31:19 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:03:00 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,38 @@ void	kill_check(int pid, int signum)
 		write(2, "Error, sending signum\n", 22);
 		exit (EXIT_FAILURE);
 	}
+}
+
+char	*ft_realloc(char *str1, char c)
+{
+	int		i;
+	int		a;
+	int		len;
+	char	*return_str;
+
+	i = 0;
+	a = 0;
+	if (str1 == NULL)
+    {
+        return_str = malloc(2);
+        if (return_str == NULL)
+            return NULL;
+        
+        return_str[0] = c;
+        return_str[1] = '\0';
+        return return_str;
+    }
+	len = ft_strlen(str1) + 2;
+	return_str = malloc(len);
+	if (return_str == NULL)
+		return NULL;
+	while (str1[i] != '\0')
+	{
+		return_str[i] =  str1[i];
+		i++;
+	}
+	return_str[i] = c;
+	return_str[i + 1] = '\0';
+	free(str1);
+	return (return_str);
 }

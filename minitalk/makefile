@@ -28,36 +28,36 @@ all: $(NAME_SERV) $(NAME_CLIENT)
 bonus: $(NAME_SERV_BONUS) $(NAME_CLIENT_BONUS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME_SERV): $(FO_SERV) $(LIBFT_PATH)
-	echo "Compiling server..."
-	$(CC) $(CFLAGS) $(FO_SERV) $(LIBFT_PATH) -o $(NAME_SERV)
+	@echo "Compiling server..."
+	@$(CC) $(CFLAGS) $(FO_SERV) $(LIBFT_PATH) -o $(NAME_SERV)
 
 $(NAME_CLIENT): $(FO_CLIENT) $(LIBFT_PATH)
-	echo "Compiling client..."
-	$(CC) $(CFLAGS) $(FO_CLIENT) $(LIBFT_PATH) -o $(NAME_CLIENT)
+	@echo "Compiling client..."
+	@$(CC) $(CFLAGS) $(FO_CLIENT) $(LIBFT_PATH) -o $(NAME_CLIENT)
 
 $(NAME_SERV_BONUS): $(FO_SERV_BONUS) $(LIBFT_PATH)
-	echo "Compiling server bonus..."
-	$(CC) $(CFLAGS) $(FO_SERV_BONUS) $(LIBFT_PATH) -o $(NAME_SERV_BONUS)
+	@echo "Compiling server bonus..."
+	@$(CC) $(CFLAGS) $(FO_SERV_BONUS) $(LIBFT_PATH) -o $(NAME_SERV_BONUS)
 
 $(NAME_CLIENT_BONUS): $(FO_CLIENT_BONUS) $(LIBFT_PATH)
-	echo "Compiling client bonus..."
-	$(CC) $(CFLAGS) $(FO_CLIENT_BONUS) $(LIBFT_PATH) -o $(NAME_CLIENT_BONUS)
+	@echo "Compiling client bonus..."
+	@$(CC) $(CFLAGS) $(FO_CLIENT_BONUS) $(LIBFT_PATH) -o $(NAME_CLIENT_BONUS)
 
 $(LIBFT_PATH):
-	make -sC libft/
+	@make -sC libft/
 
 clean:
-	echo "Cleaning object files"
-	rm -f $(FO_SERV) $(FO_CLIENT) $(FO_SERV_BONUS) $(FO_CLIENT_BONUS)
-	make clean -sC libft/
+	@echo "Cleaning object files"
+	@rm -f $(FO_SERV) $(FO_CLIENT) $(FO_SERV_BONUS) $(FO_CLIENT_BONUS)
+	@make clean -sC libft/
 
 fclean: clean
-	echo "Removing executables"
-	rm -rf $(NAME_SERV) $(NAME_CLIENT) $(NAME_SERV_BONUS) $(NAME_CLIENT_BONUS)
-	make fclean -sC libft/
+	@echo "Removing executables"
+	@rm -rf $(NAME_SERV) $(NAME_CLIENT) $(NAME_SERV_BONUS) $(NAME_CLIENT_BONUS)
+	@make fclean -sC libft/
 
 re: fclean all
 
