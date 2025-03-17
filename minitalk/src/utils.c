@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:18:35 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/13 11:37:10 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/17 09:28:20 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,24 @@ char	*ft_realloc(char *str1, char c)
 	int		len;
 	char	*return_str;
 
-	i = 0;
+	i = -1;
 	a = 0;
 	if (str1 == NULL)
-    {
-        return_str = malloc(2);
-        if (return_str == NULL)
-            return NULL;
-        
-        return_str[0] = c;
-        return_str[1] = '\0';
-        return return_str;
-    }
-	len = ft_strlen(str1) + 2;
-	return_str = malloc(len);
-	if (return_str == NULL)
-		return NULL;
-	while (str1[i] != '\0')
 	{
-		return_str[i] =  str1[i];
-		i++;
+		return_str = malloc(2);
+		if (return_str == NULL)
+			return (NULL);
+		return_str[0] = c;
+		return_str[1] = '\0';
+		return (return_str);
 	}
+	len = ft_strlen(str1) + 2;
+	return_str = malloc(len * sizeof(char));
+	if (return_str == NULL)
+		return (NULL);
+	while (str1[++i] != '\0')
+		return_str[i] = str1[i];
 	return_str[i] = c;
 	return_str[i + 1] = '\0';
-	free(str1);
-	return (return_str);
+	return (free(str1), return_str);
 }

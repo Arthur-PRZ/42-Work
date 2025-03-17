@@ -6,7 +6,7 @@
 /*   By: artperez <artperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:12:43 by artperez          #+#    #+#             */
-/*   Updated: 2025/03/13 13:14:40 by artperez         ###   ########.fr       */
+/*   Updated: 2025/03/17 09:24:29 by artperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,17 @@ void	sigusr_handler(int signum, siginfo_t *info, void *more_info)
 	i++;
 	if (i == 8)
 	{
+		i = 0;
 		if (c == '\0')
 		{
 			ft_printf("%s\n", str);
-			free(str);
-			str = NULL;
 			kill_check(pid_sender, SIGUSR2);
 			c = 0;
-			i = 0;
+			(free(str), str = NULL);
 			return ;
 		}
 		str = ft_realloc(str, c);
 		c = 0;
-		i = 0;
 	}
 	kill_check(pid_sender, SIGUSR1);
 }
