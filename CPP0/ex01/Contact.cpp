@@ -1,7 +1,8 @@
 #include "phonebook.h"
+#include "using.h"
 
 Contact::Contact() : firstName("unknow"), lastName("unknow"), nickname("unknow"),
-    darkestSecret("unknow"), phoneNbr(-1)
+    darkestSecret("unknow"), phoneNbr("-1")
 {
 }
 
@@ -27,4 +28,28 @@ void    Contact::setDarkestSecret(string newDarkestSecret)
 void    Contact::setPhoneNbr(string newPhoneNbr)
 {
     phoneNbr = newPhoneNbr;
+}
+
+string    Contact::getFirstName()
+{
+    return firstName;
+}
+
+string    Contact::getLastName()
+{
+    return lastName;
+}
+string    Contact::getNickname()
+{
+    return nickname;
+}
+
+string    Contact::getDarkestSecret()
+{
+    return darkestSecret;
+}
+
+string    Contact::getPhoneNbr()
+{
+    return phoneNbr;
 }

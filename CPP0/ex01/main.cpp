@@ -1,4 +1,5 @@
 #include "phonebook.h"
+#include "using.h"
 
 int main(void)
 {
@@ -6,7 +7,7 @@ int main(void)
 	string	input;
 
 	cout << "CMD available : ADD, SEARCH, EXIT" << endl;
-	cin >> input;
+	getline(cin, input);
 	while (input != "EXIT")
 	{
 		if (input == "ADD")
@@ -14,6 +15,6 @@ int main(void)
 		else if (input == "SEARCH")
 			phoneBook.search();
 		cout << "CMD available : ADD, SEARCH, EXIT" << endl;
-		cin >> input;
+		getline(cin, input);
 	}
 }
