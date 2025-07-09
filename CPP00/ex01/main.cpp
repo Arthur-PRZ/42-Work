@@ -7,7 +7,8 @@ int main(void)
 	string	input;
 
 	cout << "CMD available : ADD, SEARCH, EXIT" << endl;
-	getline(cin, input);
+	if (!getline(cin, input))
+		std::exit(0);
 	while (input != "EXIT")
 	{
 		if (input == "ADD")
@@ -15,6 +16,7 @@ int main(void)
 		else if (input == "SEARCH")
 			phoneBook.search();
 		cout << "CMD available : ADD, SEARCH, EXIT" << endl;
-		getline(cin, input);
+		if (!getline(cin, input))
+			std::exit(0);
 	}
 }

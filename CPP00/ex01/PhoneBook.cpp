@@ -10,7 +10,8 @@ void checkInput(string &str)
     while(str[0] == '\0')
     {
         cout << "Invalid input, please enter a valid one" << endl;
-        getline(cin, str);
+        if (!getline(cin, str))
+            std::exit(0);
     }
 }
 
@@ -29,29 +30,35 @@ void PhoneBook::add()
     string firstName, lastName, nickname, darkestSecret, phoneNbr;
 
     std::cout << "Please enter the first name" << std::endl;
-    getline(cin, firstName);
+    if (!getline(cin, firstName))
+            std::exit(0);
     checkInput(firstName);
 
     std::cout << "Please enter the last name" << std::endl;
-    getline(cin, lastName);
+    if (!getline(cin, lastName))
+        return;
     checkInput(lastName);
 
     std::cout << "Please enter the nickname" << std::endl;
-    getline(cin, nickname);
+    if (!getline(cin, nickname))
+            std::exit(0);
     checkInput(nickname);
 
     std::cout << "Please enter the phone nbr" << std::endl;
-    getline(cin, phoneNbr);
+    if (!getline(cin, phoneNbr))
+            std::exit(0);
     checkInput(phoneNbr);
     while (!checkNbr(phoneNbr))
     {
         std::cout << "Please enter a right phone nbr" << std::endl;
-        getline(cin, phoneNbr);
+        if (!getline(cin, phoneNbr))
+            std::exit(0);
         checkInput(phoneNbr);
     }
 
     std::cout << "Please enter the darkest secret" << std::endl;
-    getline(cin, darkestSecret);
+    if (!getline(cin, darkestSecret))
+        std::exit(0);
     checkInput(darkestSecret);
 
     contacts[curr_contact].setFirstName(firstName);
@@ -86,7 +93,8 @@ void PhoneBook::search()
         cout << setw(10) << truncate10(contacts[i].getNickname()) << endl;
     }
     cout << "Enter the index of the contact you want more informations" << endl;
-    getline(cin, input);
+    if (!getline(cin, input))
+        std::exit(0);
     checkInput(input);
     std::stringstream iss(input);
     if (!(iss >> index))
