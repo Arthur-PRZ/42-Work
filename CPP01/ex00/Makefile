@@ -1,7 +1,7 @@
 NAME = BraiiiiiiinnnzzzZ
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = newZombie.cpp main.cpp randomChump.cpp Zombie.cpp 
 

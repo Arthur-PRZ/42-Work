@@ -1,7 +1,7 @@
 NAME = MoarBrainz!
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = Zombie.cpp main.cpp zombieHorde.cpp
 
