@@ -90,8 +90,8 @@ void    Account::displayStatus(void) const
 {
     _displayTimestamp();
     std::cout <<  " index:" << _accountIndex << ";"
-        << "amout:" << _amount << ";"
-        << "deposit:" << _nbDeposits << ";"
+        << "amount:" << _amount << ";"
+        << "deposits:" << _nbDeposits << ";"
         << "withdrawals:" << _nbWithdrawals << std::endl;
 }
 
