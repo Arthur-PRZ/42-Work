@@ -32,16 +32,20 @@ void    Harl::error( void )
 
 void    Harl::complain( std::string level )
 {
-    std::string  levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    void         (Harl::*functions[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-
-    for (int i = 0; i < 5; i++)
+    if (level != "DEBUG" && level != "WARNING" && level != "INFO" && level != "ERROR")
     {
-        if (level == levels[i])
-        {
-            (this->*functions[i])();
-            return;
-        }
+        std::cout << "Level not found" << std::endl;
+        return ;   
     }
-    std::cout << "Level not found" << std::endl;
+    switch (level[0])
+    {
+        case 'D':
+            debug();
+        case 'I':
+            info();
+        case 'W':
+            warning();
+        case 'E':
+            error();
+    }
 }
