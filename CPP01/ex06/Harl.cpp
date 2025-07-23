@@ -35,7 +35,7 @@ void    Harl::complain( std::string level )
     if (level != "DEBUG" && level != "WARNING" && level != "INFO" && level != "ERROR")
     {
         std::cout << "Level not found" << std::endl;
-        return ;   
+        return ;
     }
     switch (level[0])
     {

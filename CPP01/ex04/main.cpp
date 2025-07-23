@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-static void getNewFile(std::ifstream& file, std::ofstream& newFile,
+static void writeReplacedFile(std::ifstream& file, std::ofstream& newFile,
     std::string replaced, std::string replace)
 {
     std::string line;
@@ -12,11 +12,14 @@ static void getNewFile(std::ifstream& file, std::ofstream& newFile,
     while (std::getline(file, line))
     {
         index = line.find(replaced);
-        while (index != std::string::npos)
+        if (replaced != replace)
         {
-            line.erase(index, replaced.length());
-            line.insert(index, replace);
-            index = line.find(replaced);
+            while (index != std::string::npos)
+            {
+                line.erase(index, replaced.length());
+                line.insert(index, replace);
+                index = line.find(replaced, index + replace.length());
+            }
         }
         newFile << line << std::endl;
     }
@@ -44,7 +47,7 @@ int main(int argc, char **argv)
         std::cout << "Error : Can't open the file" << std::endl;
         return 1;
     }
-    getNewFile(file, new_file, argv[2], argv[3]);
+    writeReplacedFile(file, new_file, argv[2], argv[3]);
     file.close();
     new_file.close();
 }

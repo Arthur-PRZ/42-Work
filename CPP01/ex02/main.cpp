@@ -11,14 +11,14 @@ int main(void)
     string *stringPTR = &str;
     string &stringREF = str;
 
-    cout << "Memory address" << endl;
+    cout << "Memory address:" << endl;
     cout << "Str: " << &str << endl;
     cout << "Ptr: " << stringPTR << endl;
     cout << "Ref: " << &stringREF << endl;
 
     cout << "-----------------" << endl;
 
-    cout << "Value" << endl;
+    cout << "Value:" << endl;
     cout << "Str: " << str << endl;
     cout << "Ptr: " << *stringPTR << endl;
     cout << "Ref: " << stringREF << endl;
