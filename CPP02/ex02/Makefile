@@ -1,4 +1,4 @@
-NAME = NowWe'reTalking
+NAME = NowWereTalking
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
