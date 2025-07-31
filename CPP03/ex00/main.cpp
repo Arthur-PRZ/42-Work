@@ -8,6 +8,6 @@ int main()
     ClapTrap1.attack("Trap");
     ClapTrap2.takeDamage(3);
     ClapTrap2.beRepaired(3);
-    ClapTrap1.attack("Clap");
+    ClapTrap2.attack("Clap");
     ClapTrap1.takeDamage(3);
 }
