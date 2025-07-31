@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-class ScavTrap : ClapTrap
+class ScavTrap : public ClapTrap
 {
 
     public :
@@ -15,6 +15,7 @@ class ScavTrap : ClapTrap
     ~ScavTrap();
     ScavTrap& operator=(const ScavTrap& scavTrap);
 
+    void attack(const std::string& target); 
     void guardGate();
 
 };
