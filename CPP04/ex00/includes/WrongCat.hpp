@@ -1,7 +1,10 @@
+#pragma once
+
 #include "string"
 #include <iostream>
+#include "WrongAnimal.hpp"
 
-class WrongCat
+class WrongCat : public WrongAnimal
 {
     protected :
 
@@ -14,5 +17,6 @@ class WrongCat
     WrongCat& operator=(const WrongCat& wrongCat);
     ~WrongCat();
 
-    virtual void makeSound();
+    void makeSound() const;
+    const std::string& getType() const;
 };

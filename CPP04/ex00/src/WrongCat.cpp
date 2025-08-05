@@ -1,4 +1,4 @@
-#include "WrongCat.hpp"
+#include "../includes/WrongCat.hpp"
 
 WrongCat::WrongCat() : type("wrongCat")
 {
@@ -23,7 +23,12 @@ WrongCat::~WrongCat()
     std::cout << "WrongCat destructor called" << std::endl;
 }
 
-void makeSound()
+void WrongCat::makeSound() const
 {
     std::cout << "WrongCat sound" << std::endl;
+}
+
+const std::string& WrongCat::getType() const
+{
+    return type;
 }

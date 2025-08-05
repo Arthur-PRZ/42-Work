@@ -1,4 +1,4 @@
-#include "Cat.hpp"
+#include "../includes/Cat.hpp"
 
 Cat::Cat() : Animal::Animal()
 {
@@ -24,7 +24,12 @@ Cat::~Cat()
     std::cout << "Cat destructor called" << std::endl;
 }
 
-void makeSound()
+void Cat::makeSound() const
 {
     std::cout << "Meeeeoooww" << std::endl;
+}
+
+const std::string& Cat::getType() const
+{
+    return type;
 }

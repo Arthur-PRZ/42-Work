@@ -2,7 +2,7 @@
 
 #include "Animal.hpp"
 
-class Cat : Animal
+class Cat : public Animal
 {
     protected :
 
@@ -15,5 +15,6 @@ class Cat : Animal
     Cat& operator=(const Cat& Cat);
     ~Cat();
 
-    void makeSound();
+    void makeSound() const;
+    const std::string& getType() const;
 };

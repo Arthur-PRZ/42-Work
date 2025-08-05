@@ -1,3 +1,5 @@
+#pragma once
+
 #include "string"
 #include <iostream>
 
@@ -12,7 +14,8 @@ class WrongAnimal
     WrongAnimal();
     WrongAnimal(const WrongAnimal& wrongAnimal);
     WrongAnimal& operator=(const WrongAnimal& wrongAnimal);
-    ~WrongAnimal();
+    virtual ~WrongAnimal();
 
-    virtual void makeSound();
+    virtual void makeSound() const;
+    virtual const std::string& getType() const;
 };
