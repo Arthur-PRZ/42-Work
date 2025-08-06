@@ -1,8 +1,12 @@
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
+#include "../includes/ClapTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+    hitPoints = 100;
+    energyPoints = 50;
+    attackDamage = 20;
+    name = "defaultScavTrap";
     std::cout << "ScavTrap default constructor called" << std::endl;
 }
 
@@ -14,9 +18,10 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
     attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& scavTrap) : ClapTrap(scavTrap)
+ScavTrap::ScavTrap(const ScavTrap& scavTrap)
 {
     std::cout << "Scavtrap copy constructor called" << std::endl;
+    *this = scavTrap;
 }
 
 ScavTrap::~ScavTrap()
@@ -26,12 +31,15 @@ ScavTrap::~ScavTrap()
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& scavTrap)
 {
-        std::cout << "Copy assignment operator called" << std::endl;
-        if (this != &scavTrap)
-        {
-            ClapTrap::operator=(scavTrap);
-        }
-        return *this;
+    std::cout << "ScavTrap copy assignment operator called" << std::endl;
+    if (this != &scavTrap)
+    {
+        name = scavTrap.name;
+        hitPoints = scavTrap.hitPoints;
+        energyPoints = scavTrap.energyPoints;
+        attackDamage = scavTrap.attackDamage;;
+    }
+    return *this;
 };
 
 void ScavTrap::attack(const std::string& target)
@@ -43,12 +51,12 @@ void ScavTrap::attack(const std::string& target)
         << " causing " << attackDamage << " points of damage !" << std::endl;
     }
     else if (energyPoints < 1)
-        std::cout << "ScavTrap " << name << " can't attack, no energy points left.";
+        std::cout << "ScavTrap " << name << " can't attack, no energy points left." << std::endl;
     else if (hitPoints < 1)
-        std::cout << "ScavTrap " << name << " can't attack, you are dead.";
+        std::cout << "ScavTrap " << name << " can't attack, you are dead." << std::endl;
 }
 
-void ScavTrap::guardGate()
+void ScavTrap::guardGate() 
 {
     std::cout << "ScavTrap " << name << " is in Gate keeper mode" << std::endl;
 }

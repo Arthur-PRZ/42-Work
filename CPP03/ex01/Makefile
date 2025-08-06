@@ -1,8 +1,8 @@
-NAME = BSP
+NAME = a.out
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = src/main.cpp src/ClapTrap.cpp src/ScavTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
