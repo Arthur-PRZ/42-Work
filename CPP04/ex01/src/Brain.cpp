@@ -17,7 +17,6 @@ Brain Brain::operator=(const Brain& brain)
     std::cout <<  "Brain operator = called" << std::endl;
     if (this != &brain)
     {
-        // delete[] ideas;
         for (int i = 0; i < 100; i++)
             ideas[i] = brain.ideas[i];
     }
