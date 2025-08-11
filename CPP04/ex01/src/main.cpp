@@ -9,6 +9,9 @@ int main()
     const Animal* j = new Dog();
     const Animal* i = new Cat();
     Animal* animals[10];
+    Dog a;
+    Dog dog;
+    dog = a;
 
     std::cout << "-----------------------" << std::endl;
 
@@ -16,9 +19,11 @@ int main()
         animals[i] = new Dog();
     for (int i = 5; i < 10; i++)
         animals[i] = new Cat();
-
+    
     std::cout << "-----------------------" << std::endl;
 
+
+    dog.makeSound();
     for (int i = 0; i < 10; i++)
         animals[i]->makeSound();
 

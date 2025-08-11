@@ -18,6 +18,7 @@ Dog& Dog::operator=(const Dog& dog)
     if (this != &dog)
     {
         type = dog.type;
+        delete brain;
         brain = new Brain(*dog.brain);
     }
     return *this;
@@ -25,8 +26,8 @@ Dog& Dog::operator=(const Dog& dog)
 
 Dog::~Dog()
 {
+    delete brain;
     std::cout << "Dog destructor called" << std::endl;
-    delete[] brain;
 }
 
 void Dog::makeSound() const
