@@ -24,11 +24,6 @@ WrongCat::~WrongCat()
     std::cout << "WrongCat destructor called" << std::endl;
 }
 
-void WrongCat::makeSound() const
-{
-    std::cout << "WrongCat sound" << std::endl;
-}
-
 const std::string& WrongCat::getType() const
 {
     return type;
