@@ -1,12 +1,14 @@
-#include <Bureaucrat.hpp>
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 Bureaucrat::Bureaucrat() : name("Benjamin"), grade (150)
 {
+    std::cout << "Default constructor called" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bur)
 {
+    std::cout << "Operator = called" << std::endl;
     if (this != &bur)
     {
         grade = bur.grade;
@@ -16,33 +18,43 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bur)
 
 Bureaucrat::Bureaucrat(const Bureaucrat& bur) : name(bur.name), grade(bur.grade)
 {
+    std::cout << "Copy onstructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string newName, int newGrade) : name(newName), grade(newGrade)
 {
-    try
-    {
-        if (grade < 1)
-            throw GradeTooHightException();
-        else if (grade > 150)
-            throw GradeTooLowException(); 
-    }
-    catch (const Bureaucrat::GradeTooHightException& execpt)
-    {
-        std::cout << execpt.what() << std::endl;
-    }
-    catch (const Bureaucrat::GradeTooLowException& execpt)
-    {
-        std::cout << execpt.what() << std::endl;
-    }
+    std::cout << "Constructor called" << std::endl;
+    if (grade < 1)
+        throw GradeTooHighException();
+    else if (grade > 150)
+        throw GradeTooLowException(); 
 }
 
 Bureaucrat::~Bureaucrat()
 {
+    std::cout << "Destructor called" << std::endl;
 }
 
-    // std::string Bureaucrat::getName();
-    // int Bureaucrat::getGrade();
+std::string Bureaucrat::getName()
+{
+    return name;
+}
 
-    // void Bureaucrat::increment(Bureaucrat& bur);
-    // void Bureaucrat::decrement(Bureaucrat& bur);
+int Bureaucrat::getGrade()
+{
+    return grade;
+}
+
+void Bureaucrat::increment()
+{
+    grade--;
+    if (grade <= 0)
+        throw GradeTooHighException();
+}
+
+void Bureaucrat::decrement()
+{
+    grade++;
+    if (grade >= 151)
+        throw GradeTooLowException();
+}
