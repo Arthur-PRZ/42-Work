@@ -1,4 +1,5 @@
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 #include <iostream>
 
 Bureaucrat::Bureaucrat() : _name("Benjamin"), _grade (150)
@@ -50,6 +51,18 @@ void Bureaucrat::increment()
     _grade--;
     if (_grade <= 0)
         throw GradeTooHighException();
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+    if (form.beSigned(*this) == true)
+    {
+        std::cout << _name << " signed " << form.getName() << std::endl;           
+    }
+    else
+    {
+        std::cout << _name << " couldn't sign " << form.getName() << " because this form is already signed." << std::endl;
+    }
 }
 
 void Bureaucrat::decrement()
