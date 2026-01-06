@@ -1,27 +1,27 @@
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 #include "../inc/Bureaucrat.hpp"
 
-Form::Form() : _name("default"), _gradeRequiredToSign(50), _gradeRequiredToExe(100), _isSigned(false)
+AForm::AForm() : _name("default"), _gradeRequiredToSign(50), _gradeRequiredToExe(100), _isSigned(false)
 {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Form& Form::operator=(const Form &form)
+AForm& AForm::operator=(const AForm &AForm)
 {
     std::cout << "operator = called" << std::endl;
-    if (this != &form)
+    if (this != &AForm)
     {
-        _isSigned = form._isSigned;
+        _isSigned = AForm._isSigned;
     }
     return *this;
 }
 
-Form::Form(Form &copy) : _name(copy._name), _gradeRequiredToSign(copy._gradeRequiredToSign), _gradeRequiredToExe(copy._gradeRequiredToExe), _isSigned(copy._isSigned)
+AForm::AForm(AForm &copy) : _name(copy._name), _gradeRequiredToSign(copy._gradeRequiredToSign), _gradeRequiredToExe(copy._gradeRequiredToExe), _isSigned(copy._isSigned)
 {
     std::cout << "Copy constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bool isSigned) : _name(name), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredToExe(gradeRequiredToExe), _isSigned(isSigned)
+AForm::AForm(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bool isSigned) : _name(name), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredToExe(gradeRequiredToExe), _isSigned(isSigned)
 {
     std::cout << "Constructor called" << std::endl;
     if (gradeRequiredToExe < 1 || gradeRequiredToSign < 1)
@@ -30,32 +30,32 @@ Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bo
         throw GradeTooLowException(); 
 }
 
-Form::~Form()
+AForm::~AForm()
 {
     std::cout << "Destructor called" << std::endl;
 }
 
-const std::string &Form::getName()
+const std::string &AForm::getName() const
 {
     return _name;
 }
 
-int Form::getGradeRequiredToSign()
+int AForm::getGradeRequiredToSign() const
 {
     return _gradeRequiredToSign;
 }
 
-int Form::getGradeRequiredTeExe()
+int AForm::getGradeRequiredTeExe() const
 {
     return _gradeRequiredToExe;
 }
 
-bool Form::getIsSigned()
+bool AForm::getIsSigned() const
 {
     return  _isSigned;
 }
 
-bool Form::beSigned(Bureaucrat &bur)
+bool AForm::beSigned(Bureaucrat &bur)
 {
     if (bur.getGrade() <= _gradeRequiredToSign && _isSigned == false)
     {
@@ -64,15 +64,15 @@ bool Form::beSigned(Bureaucrat &bur)
     }
     else if (bur.getGrade() > _gradeRequiredToSign)
     {
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
     return false;
 }
 
-std::ostream &operator<<(std::ostream &out, Form &form)
+std::ostream &operator<<(std::ostream &out, AForm &AForm)
 {
-    out << form.getName() <<  ", form  grade required to sign it " << form.getGradeRequiredToSign()
-        << ", form grade required to execute it " << form.getGradeRequiredTeExe()
-        << (form.getIsSigned() ? ", the form is signed" : ", the form is not signed") << std::endl;
+    out << AForm.getName() <<  ", AForm  grade required to sign it " << AForm.getGradeRequiredToSign()
+        << ", AForm grade required to execute it " << AForm.getGradeRequiredTeExe()
+        << (AForm.getIsSigned() ? ", the AForm is signed" : ", the AForm is not signed") << std::endl;
     return out;
 }

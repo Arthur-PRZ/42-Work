@@ -1,4 +1,4 @@
-#include "ShrubberyCreationForm.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("defaultSCR", 145, 137, false), _target("defaultTarget") 
 {
@@ -17,7 +17,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &copy)
     _target = copy._target;
 }
 
-
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &shrub)
 {
     std::cout << "SCF opetato = called" << std::endl;
@@ -29,10 +28,28 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &s
     return *this;
 }
 
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+    std::cout << "SCF destructor Called" << std::endl; 
+}
+
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-    if (getIsSigned() == false)
-    {
+    // if (!this->getIsSigned())
+    //     throw
+    if (executor.getGrade() > this->getGradeRequiredTeExe())
+        throw GradeTooLowException();
 
-    }
+    std::string fileName = _target + "_shrubbery";
+    std::ofstream file(fileName.c_str());
+    if (!file)
+        return ;
+    file << "      *\n"
+            "     ***\n"
+            "    *****\n"
+            "   *******\n"
+            "  *********\n"
+            "      |\n"
+            "      |\n";
+    file.close();
 }

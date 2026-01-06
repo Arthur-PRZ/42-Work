@@ -35,5 +35,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-
+    if (executor.getGrade() > this->getGradeRequiredTeExe())
+        throw GradeTooLowException();
+    std::cout << "DDDDRRRRRRRRRRRRRR" << std::endl;
+    bool sucess = rand() % 2;
+    if (sucess == 0)
+        std::cout << _target << " has been robotomized" << std::endl;
+    else
+        std::cout << "Robotomy failed" << std::endl;
 }

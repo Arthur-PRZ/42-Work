@@ -1,6 +1,11 @@
 NAME = Form
 CC = c++ -Wall -Wextra -Werror -std=c++98
-SRC = src/Bureaucrat.cpp src/Form.cpp src/main.cpp
+SRC = src/main.cpp \
+      src/Bureaucrat.cpp \
+      src/ShrubberyCreationForm.cpp \
+      src/PresidentialPardonForm.cpp \
+      src/RobotomyRequestForm.cpp \
+      src/AForm.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

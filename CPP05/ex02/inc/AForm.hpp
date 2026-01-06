@@ -18,15 +18,15 @@ class AForm
     public :
 
     AForm();
-    AForm(Form &copy);
+    AForm(AForm &copy);
     AForm(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bool isSigned);
     AForm &operator=(const AForm &form);
     virtual ~AForm();
 
-    const std::string &getName();
-    int getGradeRequiredToSign();
-    int getGradeRequiredTeExe();
-    bool getIsSigned();
+    const std::string &getName() const;
+    int getGradeRequiredToSign() const;
+    int getGradeRequiredTeExe() const;
+    bool getIsSigned() const;
 
     bool beSigned(Bureaucrat &bur);
     virtual void execute(Bureaucrat const& executor) const = 0;
@@ -52,6 +52,6 @@ class AForm
     };
 };
 
-std::ostream &operator<<(std::ostream &out, Form &form);
+std::ostream &operator<<(std::ostream &out, AForm &form);
 
 #endif
