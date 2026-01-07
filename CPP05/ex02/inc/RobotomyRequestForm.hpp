@@ -13,7 +13,7 @@ class RobotomyRequestForm : public AForm
     public :
 
     RobotomyRequestForm();
-    RobotomyRequestForm(std::string &target);
+    RobotomyRequestForm(std::string target);
     RobotomyRequestForm(RobotomyRequestForm &copy);
     RobotomyRequestForm &operator=(RobotomyRequestForm &RRF);
     ~RobotomyRequestForm();

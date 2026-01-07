@@ -6,26 +6,96 @@
 
 int main()
 {   
+    Bureaucrat lumian("Lumian", 2);
+    Bureaucrat louis("Louis", 146);
+
+    std::cout << "-------------------------------" << std::endl;
+    std::cout << "TRYING PRESIDENTIAL PARDON FORM" << std::endl;
+    std::cout << "-------------------------------" << std::endl << std::endl;
+
+    PresidentialPardonForm Pform;
+
+    try
+    {
+        louis.signForm(Pform);
+    }
+    catch(const AForm::GradeTooLowException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    try
+    {
+        Pform.execute(lumian);
+    }
+    catch(const AForm::FormNotSignedException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    lumian.signForm(Pform);
+    lumian.signForm(Pform);
+    Pform.execute(lumian);
+
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "TRYING ROBOTOMY REQUEST FORM" << std::endl;
+    std::cout << "----------------------------" << std::endl << std::endl;
+
+    RobotomyRequestForm Rform("Jade");
+
+    try
+    {
+        louis.signForm(Rform);
+    }
+    catch(const AForm::GradeTooLowException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    try
+    {
+        Rform.execute(lumian);
+    }
+    catch(const AForm::FormNotSignedException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    lumian.signForm(Rform);
+    lumian.signForm(Rform);
+    Rform.execute(lumian);
 
     std::cout << "-----------------------" << std::endl;
-    std::cout << "TRYING BASIC CONSTRUCTOR/DESTRUCTOR" << std::endl;
+    std::cout << "TRYING SHRUBBERY CREATION FORM" << std::endl;
     std::cout << "-----------------------" << std::endl << std::endl;
 
+    ShrubberyCreationForm Sform;
 
-    // Bureaucrat bur1("Lumian", 2);
-    // Bureaucrat bur2("Louis", 30);
-    // PresidentialPardonForm Pform;
+    try
+    {
+        louis.signForm(Sform);
+    }
+    catch(const AForm::GradeTooLowException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
 
-    // try
-    // {
-    //     Pform.beSigned(bur2);
-    //     Pform.execute(bur2);
-    // }
-    // catch(const AForm::GradeTooLowException& execpt)
-    // {
-    //     std::cout << execpt.what() << std::endl;
-    // }
-    // Pform.beSigned(bur1);
-    // Pform.execute(bur1);
+    try
+    {
+        Sform.execute(lumian);
+    }
+    catch(const AForm::FormNotSignedException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+
+    lumian.signForm(Sform);
+    lumian.signForm(Sform);
+    Sform.execute(lumian);
+
+    std::cout << "----------" << std::endl;
+    std::cout << "DESTRUCTOR" << std::endl;
+    std::cout << "----------" << std::endl << std::endl;
 
 }

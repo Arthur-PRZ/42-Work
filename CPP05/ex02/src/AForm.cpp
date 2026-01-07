@@ -3,12 +3,12 @@
 
 AForm::AForm() : _name("default"), _gradeRequiredToSign(50), _gradeRequiredToExe(100), _isSigned(false)
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "AForm Default constructor called" << std::endl;
 }
 
 AForm& AForm::operator=(const AForm &AForm)
 {
-    std::cout << "operator = called" << std::endl;
+    std::cout << "AForm operator = called" << std::endl;
     if (this != &AForm)
     {
         _isSigned = AForm._isSigned;
@@ -18,12 +18,12 @@ AForm& AForm::operator=(const AForm &AForm)
 
 AForm::AForm(AForm &copy) : _name(copy._name), _gradeRequiredToSign(copy._gradeRequiredToSign), _gradeRequiredToExe(copy._gradeRequiredToExe), _isSigned(copy._isSigned)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "AForm Copy constructor called" << std::endl;
 }
 
 AForm::AForm(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bool isSigned) : _name(name), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredToExe(gradeRequiredToExe), _isSigned(isSigned)
 {
-    std::cout << "Constructor called" << std::endl;
+    std::cout << "Aform Constructor called" << std::endl;
     if (gradeRequiredToExe < 1 || gradeRequiredToSign < 1)
         throw GradeTooHighException();
     else if (gradeRequiredToExe > 150 || gradeRequiredToSign > 150)
@@ -32,7 +32,7 @@ AForm::AForm(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, 
 
 AForm::~AForm()
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "AForm Destructor called" << std::endl;
 }
 
 const std::string &AForm::getName() const

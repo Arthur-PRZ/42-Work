@@ -1,11 +1,12 @@
 #include "../inc/RobotomyRequestForm.hpp"
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("defaultRRF", 72, 45, false), _target("defaultTarget")
 {
     std::cout << "RRF default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string &target) : AForm("defaultRRF", 72, 45, false), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("defaultRRF", 72, 45, false), _target(target)
 {
     std::cout << "RRF constructor called" << std::endl;
 }
@@ -35,11 +36,13 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+    if (!this->getIsSigned())
+        throw FormNotSignedException();
     if (executor.getGrade() > this->getGradeRequiredTeExe())
         throw GradeTooLowException();
     std::cout << "DDDDRRRRRRRRRRRRRR" << std::endl;
-    bool sucess = rand() % 2;
-    if (sucess == 0)
+    srand(std::time(NULL));
+    if (std::rand() % 2)
         std::cout << _target << " has been robotomized" << std::endl;
     else
         std::cout << "Robotomy failed" << std::endl;
