@@ -1,0 +1,101 @@
+#include "../inc/Bureaucrat.hpp"
+#include "../inc/AForm.hpp"
+#include "../inc/PresidentialPardonForm.hpp"
+#include "../inc/RobotomyRequestForm.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
+
+int main()
+{   
+    Bureaucrat lumian("Lumian", 2);
+    Bureaucrat louis("Louis", 146);
+
+    std::cout << "-------------------------------" << std::endl;
+    std::cout << "TRYING PRESIDENTIAL PARDON FORM" << std::endl;
+    std::cout << "-------------------------------" << std::endl << std::endl;
+
+    PresidentialPardonForm Pform;
+
+    try
+    {
+        louis.signForm(Pform);
+    }
+    catch(const AForm::GradeTooLowException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    try
+    {
+        Pform.execute(lumian);
+    }
+    catch(const AForm::FormNotSignedException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    lumian.signForm(Pform);
+    lumian.signForm(Pform);
+    Pform.execute(lumian);
+
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "TRYING ROBOTOMY REQUEST FORM" << std::endl;
+    std::cout << "----------------------------" << std::endl << std::endl;
+
+    RobotomyRequestForm Rform("Jade");
+
+    try
+    {
+        louis.signForm(Rform);
+    }
+    catch(const AForm::GradeTooLowException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    try
+    {
+        Rform.execute(lumian);
+    }
+    catch(const AForm::FormNotSignedException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    lumian.signForm(Rform);
+    lumian.signForm(Rform);
+    Rform.execute(lumian);
+
+    std::cout << "-----------------------" << std::endl;
+    std::cout << "TRYING SHRUBBERY CREATION FORM" << std::endl;
+    std::cout << "-----------------------" << std::endl << std::endl;
+
+    ShrubberyCreationForm Sform;
+
+    try
+    {
+        louis.signForm(Sform);
+    }
+    catch(const AForm::GradeTooLowException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+    try
+    {
+        Sform.execute(lumian);
+    }
+    catch(const AForm::FormNotSignedException& execpt)
+    {
+        std::cout << execpt.what() << std::endl;
+    }
+
+
+    lumian.signForm(Sform);
+    lumian.signForm(Sform);
+    Sform.execute(lumian);
+
+    std::cout << "----------" << std::endl;
+    std::cout << "DESTRUCTOR" << std::endl;
+    std::cout << "----------" << std::endl << std::endl;
+
+}
