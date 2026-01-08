@@ -1,5 +1,9 @@
 #include "../inc/Intern.hpp"
 #include "../inc/AForm.hpp"
+#include "../inc/RobotomyRequestForm.hpp"
+#include "../inc/PresidentialPardonForm.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
+
 
 Intern::Intern()
 {
@@ -24,8 +28,47 @@ Intern::~Intern()
     std::cout << "Intern destructor called" << std::endl;
 }
 
-AForm* makeForm(std::string formName, std::string formTarget)
+AForm *Intern::CreateRobotomy(const std::string &target)
+{
+    return new RobotomyRequestForm(target);
+};
+
+AForm *Intern::CreatePresident(const std::string &target)
+{
+    return new PresidentialPardonForm(target);
+};
+
+AForm *Intern::CreateShrubbery(const std::string &target)
+{
+    return new ShrubberyCreationForm(target);
+};
+
+AForm* Intern::makeForm(std::string requestName, std::string requestTarget)
 {
     
+    struct FormRequest
+    {
+        std::string formName;
+        AForm *(*create)(const std::string& target);
+    };
+    
+    FormRequest findRequest[] =
+    {
+        {"robotomy request", &Intern::CreateRobotomy},
+        {"presidential request", &Intern::CreatePresident},
+        {"shrubbery request", &Intern::CreateShrubbery},
+    };
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (findRequest[i].formName == requestName)
+        {
+            std::cout << "Intern creates " << requestName << std::endl;
+            return findRequest[i].create(requestTarget);
+        }
+    }
+
+    std::cout << requestName << " not found" << std::endl;
+    return NULL;
 }
 

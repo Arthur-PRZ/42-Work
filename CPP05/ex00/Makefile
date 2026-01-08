@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = a.out
 CC = c++ -Wall -Wextra -Werror -std=c++98
 SRC = Bureaucrat.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)

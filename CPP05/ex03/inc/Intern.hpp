@@ -3,10 +3,14 @@
 
 #include "AForm.hpp"
 
-class AForm;
-
 class Intern
 {
+    private :
+
+    static AForm *CreateRobotomy(const std::string &target);
+    static AForm *CreateShrubbery(const std::string &target);
+    static AForm *CreatePresident(const std::string &target);
+
     public :
 
     Intern();
@@ -14,7 +18,9 @@ class Intern
     Intern &operator=(const Intern& copy);
     ~Intern();
 
-    AForm *makeForm(std::string formName, std::string formTarget);
+    AForm *makeForm(std::string requestName, std::string requestTarget);
+
+
 };
 
 #endif

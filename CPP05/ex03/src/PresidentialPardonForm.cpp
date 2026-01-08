@@ -5,7 +5,7 @@ PresidentialPardonForm::PresidentialPardonForm() : AForm("defaultPPF", 25, 5, fa
     std::cout << "PPF default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string &target) : AForm("PPF", 25, 5 ,false) , _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PPF", 25, 5 ,false) , _target(target)
 {
     std::cout << "PPF constructor called" << std::endl;
 }

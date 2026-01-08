@@ -1,4 +1,4 @@
-NAME = Form
+NAME = a.out
 CC = c++ -Wall -Wextra -Werror -std=c++98
 SRC = src/Bureaucrat.cpp src/Form.cpp src/main.cpp
 OBJ = $(SRC:.cpp=.o)
