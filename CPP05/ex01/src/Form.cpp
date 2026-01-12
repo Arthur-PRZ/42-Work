@@ -3,12 +3,12 @@
 
 Form::Form() : _name("default"), _gradeRequiredToSign(50), _gradeRequiredToExe(100), _isSigned(false)
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Form default constructor called" << std::endl;
 }
 
 Form& Form::operator=(const Form &form)
 {
-    std::cout << "operator = called" << std::endl;
+    std::cout << "Form operator = called" << std::endl;
     if (this != &form)
     {
         _isSigned = form._isSigned;
@@ -18,7 +18,7 @@ Form& Form::operator=(const Form &form)
 
 Form::Form(Form &copy) : _name(copy._name), _gradeRequiredToSign(copy._gradeRequiredToSign), _gradeRequiredToExe(copy._gradeRequiredToExe), _isSigned(copy._isSigned)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Form copy constructor called" << std::endl;
 }
 
 Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bool isSigned) : _name(name), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredToExe(gradeRequiredToExe), _isSigned(isSigned)
@@ -32,7 +32,7 @@ Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bo
 
 Form::~Form()
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Form Destructor called" << std::endl;
 }
 
 const std::string &Form::getName()

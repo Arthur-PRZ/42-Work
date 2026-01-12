@@ -10,11 +10,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("SCR", 
     std::cout << "SCF constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &copy) : AForm(copy), _target(copy._target)
 {
     std::cout << "SCF copy constructor called" << std::endl;
-    AForm::operator=(copy);
-    _target = copy._target;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &shrub)

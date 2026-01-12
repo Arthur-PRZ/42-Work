@@ -11,11 +11,9 @@ PresidentialPardonForm::PresidentialPardonForm(std::string &target) : AForm("PPF
 }
 
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &PPF)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &PPF) : AForm(PPF), _target(PPF._target)
 {
     std::cout << "PPF copy constructor called" << std::endl;
-    AForm::operator=(PPF);
-    _target = PPF._target;
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm &PPF)

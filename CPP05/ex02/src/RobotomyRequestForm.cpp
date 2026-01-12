@@ -11,11 +11,9 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("defaultRRF
     std::cout << "RRF constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &copy)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &copy) : AForm(copy), _target(copy._target)
 {
     std::cout << "RRF copy constructeur called" << std::endl;
-    AForm::operator=(copy);
-    _target = copy._target;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm &RRF)

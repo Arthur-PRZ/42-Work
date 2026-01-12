@@ -47,16 +47,17 @@ int Bureaucrat::getGrade()
 
 void Bureaucrat::increment()
 {
-    _grade--;
-    if (_grade <= 0)
+    if (_grade - 1 <= 0)
         throw GradeTooHighException();
+    _grade--;
+
 }
 
 void Bureaucrat::decrement()
 {
-    _grade++;
-    if (_grade >= 151)
+    if (_grade + 1 >= 151)
         throw GradeTooLowException();
+    _grade++;
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat &bur)

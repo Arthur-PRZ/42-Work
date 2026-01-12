@@ -35,7 +35,7 @@ int main()
 
     lumian.signForm(Pform);
     lumian.signForm(Pform);
-    Pform.execute(lumian);
+    lumian.executeForm(Pform);
 
     std::cout << "----------------------------" << std::endl;
     std::cout << "TRYING ROBOTOMY REQUEST FORM" << std::endl;
@@ -63,7 +63,7 @@ int main()
 
     lumian.signForm(Rform);
     lumian.signForm(Rform);
-    Rform.execute(lumian);
+    lumian.executeForm(Rform);
 
     std::cout << "-----------------------" << std::endl;
     std::cout << "TRYING SHRUBBERY CREATION FORM" << std::endl;
@@ -92,7 +92,7 @@ int main()
 
     lumian.signForm(Sform);
     lumian.signForm(Sform);
-    Sform.execute(lumian);
+    lumian.executeForm(Sform);
 
     std::cout << "----------" << std::endl;
     std::cout << "DESTRUCTOR" << std::endl;
