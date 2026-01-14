@@ -55,18 +55,11 @@ bool AForm::getIsSigned() const
     return  _isSigned;
 }
 
-bool AForm::beSigned(Bureaucrat &bur)
+void AForm::beSigned(Bureaucrat &bur)
 {
-    if (bur.getGrade() <= _gradeRequiredToSign && _isSigned == false)
-    {
-        _isSigned = true;
-        return true;
-    }
-    else if (bur.getGrade() > _gradeRequiredToSign)
-    {
+    if (bur.getGrade() > _gradeRequiredToSign)
         throw AForm::GradeTooLowException();
-    }
-    return false;
+    _isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &out, AForm &AForm)

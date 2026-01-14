@@ -28,7 +28,7 @@ class Form
     int getGradeRequiredTeExe();
     bool getIsSigned();
 
-    bool beSigned(Bureaucrat &bur);
+    void beSigned(Bureaucrat &bur);
 
     class GradeTooHighException : public std::exception
     {

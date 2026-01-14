@@ -55,20 +55,28 @@ void Bureaucrat::increment()
 
 void Bureaucrat::executeForm(AForm const &form) const
 {
-    form.execute(*this);
-    std::cout << _name << " executed " << form.getName() << std::endl;
+    try 
+    {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << std::endl;
+    }
+    catch (const std::exception &execpt)
+    {
+        std::cout << _name << " couldn't execute " << form.getName() << " because " << execpt.what() << std::endl;
+    }
 }
 
 
 void Bureaucrat::signForm(AForm &form)
 {
-    if (form.beSigned(*this) == true)
+    try
     {
-        std::cout << _name << " signed " << form.getName() << std::endl;           
-    }
-    else
+        form.beSigned(*this);
+        std::cout << _name << " signed " << form.getName() << std::endl;
+    }           
+    catch (const std::exception &execpt)
     {
-        std::cout << _name << " couldn't sign " << form.getName() << " because this form is already signed." << std::endl;
+        std::cout << _name << " couldn't sign " << form.getName() << " because " << execpt.what() << std::endl;
     }
 }
 
