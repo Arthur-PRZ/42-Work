@@ -65,9 +65,9 @@ int main()
     lumian.signForm(Rform);
     lumian.executeForm(Rform);
 
-    std::cout << "-----------------------" << std::endl;
+    std::cout << "------------------------------" << std::endl;
     std::cout << "TRYING SHRUBBERY CREATION FORM" << std::endl;
-    std::cout << "-----------------------" << std::endl << std::endl;
+    std::cout << "------------------------------" << std::endl << std::endl;
 
     ShrubberyCreationForm Sform;
 
@@ -94,8 +94,8 @@ int main()
     lumian.signForm(Sform);
     lumian.executeForm(Sform);
 
-    // std::cout << "----------" << std::endl;
-    // std::cout << "DESTRUCTOR" << std::endl;
-    // std::cout << "----------" << std::endl << std::endl;
+    std::cout << "-----------" << std::endl;
+    std::cout << "DESTRUCTORS" << std::endl;
+    std::cout << "-----------" << std::endl << std::endl;
 
 }

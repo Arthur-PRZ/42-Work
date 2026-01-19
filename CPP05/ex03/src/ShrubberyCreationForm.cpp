@@ -5,19 +5,19 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("defaultSCR", 145, 137, f
     std::cout << "SCF default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("SCR", 145, 137, false), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("SCR", 145, 137, false), _target(target)
 {
     std::cout << "SCF constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
 {
     std::cout << "SCF copy constructor called" << std::endl;
     AForm::operator=(copy);
     _target = copy._target;
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &shrub)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &shrub)
 {
     std::cout << "SCF opetato = called" << std::endl;
     if (this != &shrub)

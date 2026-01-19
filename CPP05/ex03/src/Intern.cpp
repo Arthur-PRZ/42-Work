@@ -49,7 +49,7 @@ AForm* Intern::makeForm(std::string requestName, std::string requestTarget)
     struct FormRequest
     {
         std::string formName;
-        AForm *(*create)(const std::string& target);
+        AForm *(Intern::*create)(const std::string& target);
     };
     
     FormRequest findRequest[] =
@@ -64,7 +64,7 @@ AForm* Intern::makeForm(std::string requestName, std::string requestTarget)
         if (findRequest[i].formName == requestName)
         {
             std::cout << "Intern creates " << requestName << std::endl;
-            return findRequest[i].create(requestTarget);
+            return (this->*findRequest[i].create)(requestTarget);
         }
     }
 

@@ -11,14 +11,14 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AFor
 }
 
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &PPF)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &PPF)
 {
     std::cout << "PPF copy constructor called" << std::endl;
     AForm::operator=(PPF);
     _target = PPF._target;
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm &PPF)
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &PPF)
 {
     std::cout << "PPF operator = called" << std::endl;
     if (this != &PPF)

@@ -7,9 +7,9 @@ class Intern
 {
     private :
 
-    static AForm *CreateRobotomy(const std::string &target);
-    static AForm *CreateShrubbery(const std::string &target);
-    static AForm *CreatePresident(const std::string &target);
+    AForm *CreateRobotomy(const std::string &target);
+    AForm *CreateShrubbery(const std::string &target);
+    AForm *CreatePresident(const std::string &target);
 
     public :
 
@@ -19,8 +19,6 @@ class Intern
     ~Intern();
 
     AForm *makeForm(std::string requestName, std::string requestTarget);
-
-
 };
 
 #endif
