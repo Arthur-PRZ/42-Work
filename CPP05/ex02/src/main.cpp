@@ -19,18 +19,18 @@ int main()
     {
         louis.signForm(Pform);
     }
-    catch(const AForm::GradeTooLowException& execpt)
+    catch(const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
     {
         Pform.execute(lumian);
     }
-    catch(const AForm::FormNotSignedException& execpt)
+    catch(const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     lumian.signForm(Pform);
@@ -47,18 +47,18 @@ int main()
     {
         louis.signForm(Rform);
     }
-    catch(const AForm::GradeTooLowException& execpt)
+    catch(const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
     {
         Rform.execute(lumian);
     }
-    catch(const AForm::FormNotSignedException& execpt)
+    catch(const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     lumian.signForm(Rform);
@@ -75,18 +75,18 @@ int main()
     {
         louis.signForm(Sform);
     }
-    catch(const AForm::GradeTooLowException& execpt)
+    catch(const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
     {
         Sform.execute(lumian);
     }
-    catch(const AForm::FormNotSignedException& execpt)
+    catch(const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
 
@@ -94,8 +94,8 @@ int main()
     lumian.signForm(Sform);
     lumian.executeForm(Sform);
 
-    std::cout << "----------" << std::endl;
-    std::cout << "DESTRUCTOR" << std::endl;
-    std::cout << "----------" << std::endl << std::endl;
+    // std::cout << "----------" << std::endl;
+    // std::cout << "DESTRUCTOR" << std::endl;
+    // std::cout << "----------" << std::endl << std::endl;
 
 }

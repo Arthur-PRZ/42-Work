@@ -18,7 +18,7 @@ class AForm
     public :
 
     AForm();
-    AForm(AForm &copy);
+    AForm(const AForm &copy);
     AForm(std::string name, int gradeRequiredToSign, int gradeRequiredToExe, bool isSigned);
     AForm &operator=(const AForm &form);
     virtual ~AForm();
@@ -37,7 +37,7 @@ class AForm
 
         virtual const char* what() const throw()
         {
-            return "Grade too hight !";
+            return "Grade too high !";
         }
     };
 

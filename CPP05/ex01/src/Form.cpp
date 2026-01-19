@@ -57,7 +57,7 @@ bool Form::getIsSigned()
 
 void Form::beSigned(Bureaucrat &bur)
 {
-    if (bur.getGrade() > _gradeRequiredToSign)
+    if (bur.getGrade() >= _gradeRequiredToSign)
         throw Form::GradeTooLowException();
     _isSigned = true;
 }

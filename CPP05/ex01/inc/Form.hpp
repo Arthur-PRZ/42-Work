@@ -36,7 +36,7 @@ class Form
 
         virtual const char* what() const throw()
         {
-            return "Grade too hight !";
+            return "Grade too high !";
         }
     };
 

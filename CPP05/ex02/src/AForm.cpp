@@ -16,7 +16,7 @@ AForm& AForm::operator=(const AForm &AForm)
     return *this;
 }
 
-AForm::AForm(AForm &copy) : _name(copy._name), _gradeRequiredToSign(copy._gradeRequiredToSign), _gradeRequiredToExe(copy._gradeRequiredToExe), _isSigned(copy._isSigned)
+AForm::AForm(const AForm &copy) : _name(copy._name), _gradeRequiredToSign(copy._gradeRequiredToSign), _gradeRequiredToExe(copy._gradeRequiredToExe), _isSigned(copy._isSigned)
 {
     std::cout << "AForm Copy constructor called" << std::endl;
 }
@@ -57,7 +57,7 @@ bool AForm::getIsSigned() const
 
 void AForm::beSigned(Bureaucrat &bur)
 {
-    if (bur.getGrade() > _gradeRequiredToSign)
+    if (bur.getGrade() >= _gradeRequiredToSign)
         throw AForm::GradeTooLowException();
     _isSigned = true;
 }
