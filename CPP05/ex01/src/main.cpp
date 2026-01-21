@@ -12,9 +12,9 @@ int main()
         std::cout << "Constructor required grade to signed to low" << std::endl;
         Form formA("TooLow", 151, 1, false);
     }
-    catch (const Form::GradeTooLowException& execpt)
+    catch (const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
         std::cout << "-----------------------" << std::endl;
     }
 
@@ -24,9 +24,9 @@ int main()
         std::cout << "Constructor required grade to execute to low" << std::endl;
         Form L("TooLow", 150, 151, false);
     }
-    catch (const Form::GradeTooLowException& execpt)
+    catch (const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
         std::cout << "-----------------------" << std::endl;
     }
 
@@ -36,9 +36,9 @@ int main()
         std::cout << "Constructor required grade to signed to high" << std::endl;
         Form TL("TooHigh", -1, 4, 0);
     }
-    catch (const Form::GradeTooHighException& execpt)
+    catch (const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
         std::cout << "-----------------------" << std::endl;
     }
 
@@ -48,9 +48,9 @@ int main()
         std::cout << "Constructor required grade to signed to high" << std::endl;
         Form TooLow("TooLow", 1, -4, 0);
     }
-    catch (const Form::GradeTooHighException& execpt)
+    catch (const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
         std::cout << "-----------------------" << std::endl;
     }
 
@@ -64,9 +64,9 @@ int main()
 
         J.signForm(C);
     }
-    catch (const Form::GradeTooLowException& execpt)
+    catch (const std::exception& e)
     {
-        std::cout << execpt.what() << std::endl;
+        std::cout << e.what() << std::endl;
         std::cout << "-----------------------" << std::endl;
     }
 
@@ -79,9 +79,6 @@ int main()
 
     Form C("JoinForm", 5, 7, 0);
     Bureaucrat A("Aurore", 1);
-    std::cout << "-----------------------" << std::endl;
-
-    A.signForm(C);
     std::cout << "-----------------------" << std::endl;
 
     A.signForm(C);

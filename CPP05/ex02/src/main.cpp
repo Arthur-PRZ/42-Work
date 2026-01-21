@@ -15,25 +15,8 @@ int main()
 
     PresidentialPardonForm Pform;
 
-    try
-    {
-        louis.signForm(Pform);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try
-    {
-        Pform.execute(lumian);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    lumian.signForm(Pform);
+    louis.signForm(Pform);
+    lumian.executeForm(Pform);
     lumian.signForm(Pform);
     lumian.executeForm(Pform);
 
@@ -43,25 +26,8 @@ int main()
 
     RobotomyRequestForm Rform("Jade");
 
-    try
-    {
-        louis.signForm(Rform);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try
-    {
-        Rform.execute(lumian);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    lumian.signForm(Rform);
+    louis.signForm(Rform);
+    lumian.executeForm(Rform);
     lumian.signForm(Rform);
     lumian.executeForm(Rform);
 
@@ -71,26 +37,8 @@ int main()
 
     ShrubberyCreationForm Sform;
 
-    try
-    {
-        louis.signForm(Sform);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try
-    {
-        Sform.execute(lumian);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-
-    lumian.signForm(Sform);
+    louis.signForm(Sform);
+    lumian.executeForm(Sform);
     lumian.signForm(Sform);
     lumian.executeForm(Sform);
 
