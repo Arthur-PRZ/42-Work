@@ -1,8 +1,10 @@
 NAME = a.out
 CC = c++ -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp \
+SRCS = main.cpp \
       ScalarConverter.cpp \
 	  utils.cpp
+
+OBJ = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 

@@ -14,14 +14,13 @@ enum eType {
 bool checkInput(std::string &input)
 {
     int pointNbr = 0;
-    int fNbr = 0;
     bool asChar = false;
     bool asFigure = false;
 
     if (input.empty())
         return false;
 
-    for (int i = 0; i < input.length(); i++)
+    for (size_t i = 0; i < input.length(); i++)
     {
         char c = input[i];
         if ((c == '+' || c == '-') && i != 0)
@@ -63,12 +62,12 @@ eType getType(std::string &str)
 
     bool asF = false;
     bool asPoint = false;
-    int i = 0;
+    size_t i = 0;
 
     if (str[i] == '+' || str[i] == '-')
         i++;
 
-    for (i; i < str.length(); i++)
+    for (; i < str.length(); i++)
     {
         if (str[i] == '.')
             asPoint = true;

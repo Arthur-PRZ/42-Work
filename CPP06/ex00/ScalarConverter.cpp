@@ -1,6 +1,10 @@
 #include "ScalarConverter.hpp"
-#include "utils.cpp"
 #include <cstdlib>
+#include <iomanip>
+
+enum eType { CHAR, INT, FLOAT, DOUBLE, INVALID };
+bool checkInput(std::string &input);
+eType getType(std::string &str);
 
 ScalarConverter::ScalarConverter()
 {
@@ -14,13 +18,14 @@ ScalarConverter::ScalarConverter(const ScalarConverter &copy)
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy)
 {
     (void)copy;
+    return *this;
 }
 
 ScalarConverter::~ScalarConverter()
 {
 }
 
-void convert(std::string &str)
+void ScalarConverter::convert(std::string str)
 {
     if (!checkInput(str))
     {
@@ -62,8 +67,11 @@ void convert(std::string &str)
         floatValue = static_cast<float>(doubleValue);
         intValue = static_cast<int>(doubleValue);
     }
-    std::cout << "char: " << charValue << std::endl;
+    if(charValue < 32 || charValue > 126)
+        std::cout << "char: Non displayable"<< std::endl;
+    else
+        std::cout << "char: " << charValue << std::endl;
     std::cout << "int: " << intValue << std::endl;
-    std::cout << "float: " << floatValue << std::endl;
-    std::cout << "double: " << doubleValue << std::endl;
+    std::cout << "float: " <<  std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
+    std::cout << "double: " <<  std::fixed << std::setprecision(1) << doubleValue << std::endl;
 }
