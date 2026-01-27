@@ -1,6 +1,9 @@
 #include "ScalarConverter.hpp"
 
-int main()
+int main(int argc, char** argv)
 {
-    ScalarConverter::convert("a");
+    if (argc > 1)
+        ScalarConverter::convert(argv[1]);
+    else
+        std::cout << "Need a input" << std::endl;
 }
