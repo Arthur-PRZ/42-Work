@@ -1,7 +1,13 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <cstdlib>
 #include <string>
+#include <iomanip>
+#include <climits>
+#include <cfloat>
+#include <cerrno>
+#include <cmath>
 
 enum eType {
     CHAR,
@@ -11,8 +17,125 @@ enum eType {
     INVALID,
     POSITIVE_INF,
     NEGATIVE_INF,
-    NAN,
+    NAN_TYPE,
 };
+
+void printConvImp()
+{
+    std::cout << "char: conversion is impossible"<< std::endl;
+    std::cout << "int: conversion is impossible"<< std::endl;
+    std::cout << "float: conversion is impossible" << std::endl;
+    std::cout << "double: conversion is impossible" << std::endl;
+}
+
+void charConvert(char *charValue, int *intValue, float *floatValue,
+        double *doubleValue, char c)
+{
+    *charValue = c;
+    *floatValue = static_cast<float>(*charValue);
+    *doubleValue = static_cast<double>(*charValue);
+    *intValue = static_cast<int>(*charValue);
+}
+
+bool intConvert(char *charValue, int *intValue, float *floatValue,
+        double *doubleValue, bool *charOverflow, std::string str)
+{
+    long temp = std::strtol(str.c_str(), NULL, 10);
+
+    if (errno == ERANGE || temp < INT_MIN || temp > INT_MAX)
+    {
+        printConvImp();
+        return false;
+    }
+
+    *intValue = std::atoi(str.c_str());
+    if (*intValue == static_cast<char>(*intValue))
+        *charValue = static_cast<char>(*intValue);
+    else
+        *charOverflow = true;
+    *floatValue = static_cast<float>(*intValue);
+    *doubleValue = static_cast<double>(*intValue);
+    return true;
+}
+
+bool floatConvert(char *charValue, int *intValue, float *floatValue,
+        double *doubleValue, bool *charOverflow, bool *isIntInitialized, std::string str)
+{
+    long temp = std::strtol(str.c_str(), NULL, 10);
+
+    if (errno == ERANGE || temp > FLT_MAX || temp < -FLT_MAX)
+    {
+        printConvImp();
+        return false;
+    }
+
+    *floatValue = std::atof(str.c_str());
+
+    if (*floatValue == static_cast<char>(*floatValue))
+        *charValue = static_cast<char>(*floatValue);
+    else
+        *charOverflow = true;
+    *doubleValue = static_cast<double>(*floatValue);
+
+    if (fmod(*floatValue, 1.0) != 0.0)
+        *isIntInitialized = false;
+    else
+        *intValue = static_cast<int>(*floatValue);
+    return true;
+}
+
+bool doubleConvert(char *charValue, int *intValue, float *floatValue,
+        double *doubleValue, bool *charOverflow, bool *isIntInitialized, std::string str)
+{
+    long temp = std::strtol(str.c_str(), NULL, 10);
+
+    if (errno == ERANGE || temp > DBL_MAX || temp < -DBL_MAX )
+    {
+        printConvImp();
+        return false;
+    }
+
+    *doubleValue = std::strtod(str.c_str(), NULL);
+
+    if (*doubleValue == static_cast<char>(*doubleValue))
+        *charValue = static_cast<char>(*doubleValue);
+    else
+        *charOverflow = true;
+    *floatValue = static_cast<float>(*doubleValue);
+    if (fmod(*doubleValue, 1.0) != 0.0)
+        *isIntInitialized = false;
+    else
+        *intValue = static_cast<int>(*doubleValue);
+    return true;
+}
+
+void pseudoLiteralsHandling(eType type)
+{
+    if (type == POSITIVE_INF)
+    {
+        std::cout << "char: impossible"<< std::endl;
+        std::cout << "int: impossible"<< std::endl;
+        std::cout << "float: +inff"  << std::endl;
+        std::cout << "double: +inf" << std::endl;
+        return ;
+    }
+    if (type == NEGATIVE_INF)
+    {
+        std::cout << "char: impossible"<< std::endl;
+        std::cout << "int: impossible"<< std::endl;
+        std::cout << "float: -inff"  << std::endl;
+        std::cout << "double: -inf" << std::endl;
+        return ;
+    }
+    if (type == NAN)
+    {
+        std::cout << "char: impossible"<< std::endl;
+        std::cout << "int: impossible"<< std::endl;
+        std::cout << "float: nanf"  << std::endl;
+        std::cout << "double: nan" << std::endl;
+        return ;
+    }
+}
 
 bool checkInput(std::string &input)
 {
@@ -63,14 +186,6 @@ bool checkInput(std::string &input)
     return true;
 }
 
-void printConvImp()
-{
-    std::cout << "char: conversion is impossible"<< std::endl;
-    std::cout << "int: conversion is impossible"<< std::endl;
-    std::cout << "float: conversion is impossible" << std::endl;
-    std::cout << "double: conversion is impossible" << std::endl;
-}
-
 eType getType(std::string &str)
 {
     if (str.length() == 1 && isdigit(str[0]) == false) 
@@ -81,7 +196,7 @@ eType getType(std::string &str)
     if (str == "-inf" || str == "-inff")
         return NEGATIVE_INF;
     if (str == "nan" || str == "nanf")
-        return NAN;
+        return NAN_TYPE;
 
     bool asF = false;
     bool asPoint = false;
@@ -104,34 +219,3 @@ eType getType(std::string &str)
         return DOUBLE;
     return INT;
 }
-
-// void stringToIntValue(std::string str)
-// {
-//     std::stringstream ss(str);
-//     int intValue;
-//     if (!(ss >> intValue))
-//     {
-//         std::cout << "Error : invalid integer" << std::endl;
-//         return ;
-//     }
-//     if (!ss.eof())
-//     {
-//         std::cout << "Error : extra characters" << std::endl;
-//     }
-//     std::cout << "Int value : " << intValue << std::endl;
-// }
-
-// void stingToCharValue(std::string str)
-// {
-//     if (str.length() != 1)
-//     {
-//         std::cout << "Too many characters" << std::endl;
-//         return ;
-//     }
-//     if (str[0] >= 32 && str[0] <= 126)
-//     {
-//         std::cout << "Char value : " << str[0] << std::endl;
-//     }
-// }
-
-

@@ -5,10 +5,19 @@
 #include <cfloat>
 #include <cerrno>
 
-enum eType { CHAR, INT, FLOAT, DOUBLE, INVALID, POSITIVE_INF, NEGATIVE_INF, NAN };
+enum eType { CHAR, INT, FLOAT, DOUBLE, INVALID, POSITIVE_INF, NEGATIVE_INF, NAN_TYPE };
 bool checkInput(std::string &input);
 eType getType(std::string &str);
 void printConvImp();
+void pseudoLiteralsHandling(eType type);
+void charConvert(char *charValue, int *intValue, float *floatValue, double *doubleValue, char c);
+bool intConvert(char *charValue, int *intValue, float *floatValue,
+                double *doubleValue, bool *charOverflow, std::string str);
+bool floatConvert(char *charValue, int *intValue, float *floatValue,
+                double *doubleValue, bool *charOverflow, bool *isIntInitialized, std::string str);
+bool doubleConvert(char *charValue, int *intValue, float *floatValue,
+                double *doubleValue, bool *charOverflow, bool *isIntInitialized, std::string str);
+
 
 ScalarConverter::ScalarConverter()
 {
@@ -38,6 +47,12 @@ void ScalarConverter::convert(std::string str)
     }
     eType type = getType(str);
     
+    if (type == POSITIVE_INF || type == NEGATIVE_INF || type == NAN_TYPE)
+    {
+        pseudoLiteralsHandling(type);
+        return ;
+    }
+
     char charValue = '\0';
     int intValue = 0;
     float floatValue = 0;
@@ -45,107 +60,28 @@ void ScalarConverter::convert(std::string str)
     bool isIntInitialized = true;
     bool charOverflow = false;
 
-    // bool overflowInt = false;
-    // bool overflowFoat = false;
-    // bool overflowDouble = false;
-
-    if (type == POSITIVE_INF)
-    {
-        std::cout << "char: impossible"<< std::endl;
-        std::cout << "int: impossible"<< std::endl;
-        std::cout << "float: +inff"  << std::endl;
-        std::cout << "double: +inf" << std::endl;
-        return ;
-    }
-    if (type == NEGATIVE_INF)
-    {
-        std::cout << "char: impossible"<< std::endl;
-        std::cout << "int: impossible"<< std::endl;
-        std::cout << "float: -inff"  << std::endl;
-        std::cout << "double: -inf" << std::endl;
-        return ;
-
-    }
-    if (type == NAN)
-    {
-        std::cout << "char: impossible"<< std::endl;
-        std::cout << "int: impossible"<< std::endl;
-        std::cout << "float: nanf"  << std::endl;
-        std::cout << "double: nan" << std::endl;
-        return ;
-    }
     if (type == CHAR)
     {
-        charValue = str[0];
-        floatValue = static_cast<float>(charValue);
-        doubleValue = static_cast<double>(charValue);
-        intValue = static_cast<int>(charValue);
+        charConvert(&charValue, &intValue, &floatValue, &doubleValue, str[0]);
     }
     else if (type == INT)
     {
-        long temp = std::strtol(str.c_str(), NULL, 10);
-
-        if (errno == ERANGE || temp < INT_MIN || temp > INT_MAX)
-        {
-            printConvImp();
+        if (!intConvert(&charValue, &intValue, &floatValue, &doubleValue, &charOverflow, str))
             return ;
-        }
-
-        intValue = std::atoi(str.c_str());
-        if (intValue == static_cast<char>(intValue))
-            charValue = static_cast<char>(intValue);
-        else
-            charOverflow = true;
-        floatValue = static_cast<float>(intValue);
-        doubleValue = static_cast<double>(intValue);
     }
     else if (type == FLOAT)
     {
-        long temp = std::strtol(str.c_str(), NULL, 10);
-
-        if (errno == ERANGE || temp > FLT_MAX || temp < -FLT_MAX)
-        {
-            printConvImp();
+        if (!floatConvert(&charValue, &intValue, &floatValue, &doubleValue,
+            &charOverflow, &isIntInitialized, str))
             return ;
-        }
-
-        floatValue = std::atof(str.c_str());
-        // if (floatValue != static_cast<char>(floatValue))
-        //     charOverflow = false;
-        if (floatValue == static_cast<char>(floatValue))
-            charValue = static_cast<char>(floatValue);
-        else
-            charOverflow = true;
-        doubleValue = static_cast<double>(floatValue);
-        if (floatValue == static_cast<int>(floatValue))
-            intValue = static_cast<int>(floatValue);
-        else
-            isIntInitialized = false;
     }
     else if (type == DOUBLE)
     {
-        long temp = std::strtol(str.c_str(), NULL, 10);
-
-        if (errno == ERANGE || temp > DBL_MAX || temp < -DBL_MAX )
-        {
-            printConvImp();
+        if (!doubleConvert(&charValue, &intValue, &floatValue, &doubleValue,
+            &charOverflow, &isIntInitialized, str))
             return ;
-        }
-
-        doubleValue = std::strtod(str.c_str(), NULL);
-        // if (doubleValue != static_cast<char>(doubleValue))
-        //     charOverflow = false;
-        if (doubleValue == static_cast<char>(doubleValue))
-            charValue = static_cast<char>(doubleValue);
-        else
-            charOverflow = true;
-        floatValue = static_cast<float>(doubleValue);
-        if (doubleValue == static_cast<int>(doubleValue))
-            intValue = static_cast<int>(doubleValue);
-        else
-            isIntInitialized = false;
-
-        }
+    }
+    
     if (charOverflow || charValue < 0)
         std::cout << "char: impossible"<< std::endl;
     else if (charValue < 32 || charValue > 126)
