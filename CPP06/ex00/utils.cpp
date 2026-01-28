@@ -20,21 +20,15 @@ bool checkInput(std::string &input)
     bool asChar = false;
     bool asFigure = false;
 
-    if (input.empty())
-        return false;
-
-    if (input.compare("+inf") || input.compare("+inff") || input.compare("-inff")
-        || input.compare("-inf")|| input.compare("nan")|| input.compare("nanf"))
+    if (input == "+inf" || input == "+inff" || input =="-inff"
+        || input == "-inf" || input == "nan" || input == "nanf")
         return true;
 
     for (size_t i = 0; i < input.length(); i++)
     {
         char c = input[i];
         if ((c == '+' || c == '-') && i != 0)
-        {
-            std::cout << "a" << std::endl;
             return false;
-        }
         if (c == '.')
         {
             pointNbr++;
@@ -45,30 +39,23 @@ bool checkInput(std::string &input)
             }
         }
         if (c == 'f' && i != input.length() - 1)
-        {    
-            std::cout << "c" << std::endl;
             return false;
-        }
-        if (isprint(c) && isdigit(c) == false && c != '.' && c != 'f')
+        if (isdigit(c) == false && c != '.' && c != 'f' && c != '-' && c != '+')
         {
+            if (asChar)
+                return false;
             asChar = true;
             if (asChar && asFigure)
-            {
-                std::cout << "d" << std::endl;
                 return false;
-            }
         }
         if (isdigit(c))
         {
             asFigure = true;
             if (asChar && asFigure)
-            {
-                std::cout << "e" << std::endl;
                 return false;
-            }
         }
     }
-    if (!asChar && !asFigure)
+    if (!asChar && !asFigure && input[0] != '\0')
     {
         std::cout << "f" << std::endl;
         return false;
@@ -86,7 +73,7 @@ void printConvImp()
 
 eType getType(std::string &str)
 {
-    if (str.length() == 1 && isprint(str[0]) && isdigit(str[0]) == false) 
+    if (str.length() == 1 && isdigit(str[0]) == false) 
         return CHAR;
 
     if (str == "+inf" || str == "+inff")

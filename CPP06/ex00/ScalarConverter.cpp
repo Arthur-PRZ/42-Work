@@ -38,12 +38,12 @@ void ScalarConverter::convert(std::string str)
     }
     eType type = getType(str);
     
-    char charValue;
-    int intValue;
-    float floatValue;
-    double doubleValue;
+    char charValue = '\0';
+    int intValue = 0;
+    float floatValue = 0;
+    double doubleValue = 0;
     bool isIntInitialized = true;
-    bool isInteger = true;
+    bool charOverflow = false;
 
     // bool overflowInt = false;
     // bool overflowFoat = false;
@@ -92,7 +92,10 @@ void ScalarConverter::convert(std::string str)
         }
 
         intValue = std::atoi(str.c_str());
-        charValue = static_cast<char>(intValue);
+        if (intValue == static_cast<char>(intValue))
+            charValue = static_cast<char>(intValue);
+        else
+            charOverflow = true;
         floatValue = static_cast<float>(intValue);
         doubleValue = static_cast<double>(intValue);
     }
@@ -107,9 +110,12 @@ void ScalarConverter::convert(std::string str)
         }
 
         floatValue = std::atof(str.c_str());
-        if (floatValue != static_cast<int>(floatValue))
-            isInteger = false;
-        charValue = static_cast<char>(floatValue);
+        // if (floatValue != static_cast<char>(floatValue))
+        //     charOverflow = false;
+        if (floatValue == static_cast<char>(floatValue))
+            charValue = static_cast<char>(floatValue);
+        else
+            charOverflow = true;
         doubleValue = static_cast<double>(floatValue);
         if (floatValue == static_cast<int>(floatValue))
             intValue = static_cast<int>(floatValue);
@@ -127,20 +133,23 @@ void ScalarConverter::convert(std::string str)
         }
 
         doubleValue = std::strtod(str.c_str(), NULL);
-        if (doubleValue != static_cast<int>(doubleValue))
-            isInteger = false;
-        charValue = static_cast<char>(doubleValue);
+        // if (doubleValue != static_cast<char>(doubleValue))
+        //     charOverflow = false;
+        if (doubleValue == static_cast<char>(doubleValue))
+            charValue = static_cast<char>(doubleValue);
+        else
+            charOverflow = true;
         floatValue = static_cast<float>(doubleValue);
         if (doubleValue == static_cast<int>(doubleValue))
             intValue = static_cast<int>(doubleValue);
         else
             isIntInitialized = false;
 
-    }
-    if (charValue < 32 || charValue > 126)
-        std::cout << "char: Non displayable"<< std::endl;
-    else if (!isInteger)
+        }
+    if (charOverflow || charValue < 0)
         std::cout << "char: impossible"<< std::endl;
+    else if (charValue < 32 || charValue > 126)
+        std::cout << "char: Non displayable"<< std::endl;
     else
         std::cout << "char: " << charValue << std::endl;
     if (isIntInitialized)
