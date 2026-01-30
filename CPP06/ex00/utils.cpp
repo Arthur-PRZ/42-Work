@@ -71,13 +71,16 @@ bool floatConvert(char *charValue, int *intValue, float *floatValue,
 
     *floatValue = std::atof(str.c_str());
 
+    std::cout << std::fixed << *floatValue << std::endl;
+
+
     if (*floatValue == static_cast<char>(*floatValue))
         *charValue = static_cast<char>(*floatValue);
     else
         *charOverflow = true;
     *doubleValue = static_cast<double>(*floatValue);
 
-    if (fmod(*floatValue, 1.0) != 0.0)
+    if (str.find_first_not_of("f0",str.find('.') + 1) != std::string::npos)
         *isIntInitialized = false;
     else
         *intValue = static_cast<int>(*floatValue);
@@ -102,7 +105,7 @@ bool doubleConvert(char *charValue, int *intValue, float *floatValue,
     else
         *charOverflow = true;
     *floatValue = static_cast<float>(*doubleValue);
-    if (fmod(*doubleValue, 1.0) != 0.0)
+    if  (*doubleValue != static_cast<int>(*doubleValue))
         *isIntInitialized = false;
     else
         *intValue = static_cast<int>(*doubleValue);
