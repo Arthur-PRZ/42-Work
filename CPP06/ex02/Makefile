@@ -1,7 +1,7 @@
 NAME = a.out
 CC = c++ -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp \
-      Serializer.cpp 
+SRCS = srcs/Base.cpp \
+      srcs/main.cpp 
 
 OBJ = $(SRCS:.cpp=.o)
 
