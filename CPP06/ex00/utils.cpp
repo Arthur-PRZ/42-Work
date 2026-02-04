@@ -130,7 +130,7 @@ void pseudoLiteralsHandling(eType type)
         std::cout << "double: -inf" << std::endl;
         return ;
     }
-    if (type == NAN)
+    if (type == NAN_TYPE)
     {
         std::cout << "char: impossible"<< std::endl;
         std::cout << "int: impossible"<< std::endl;
