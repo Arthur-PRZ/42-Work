@@ -32,7 +32,9 @@ void Span::addNumber(int nbr)
     if (this->_n > _nbrs.size())
         _nbrs.push_back(nbr);
     else
+    {
         throw SpanFull();
+    }
 }
 
 int Span::longestSpan()
@@ -40,16 +42,14 @@ int Span::longestSpan()
     if (_n < 2)
         throw NotEnoughNbrs();
     
-    std::vector<int>::iterator a = _nbrs.begin();
-    std::vector<int>::iterator i = _nbrs.end();
-    int longestValue = *a - *i;
+    int longestValue = INT_MIN;
 
-    for (; a < _nbrs.end(); a++)
+    for (std::vector<int>::iterator a = _nbrs.begin(); a < _nbrs.end(); a++)
     {
-        for(; i < _nbrs.end(); i++)
+        for(std::vector<int>::iterator i = _nbrs.begin(); i < _nbrs.end(); i++)
         {
-            if (((a - i) > longestValue) && a > i)
-                longestValue = a - i;
+            if (((*a - *i) > longestValue) && *a > *i)
+                longestValue = *a - *i;
         }
     }
     return longestValue;
@@ -60,15 +60,14 @@ int Span::shortestSpan()
     if (_n < 2)
         throw NotEnoughNbrs();
     
-    std::vector<int>::iterator a = _nbrs.begin();
-    int shortestValue = *a;
+    int shortestValue = INT_MAX;
 
-    for (; a < _nbrs.end(); a++)
+    for (std::vector<int>::iterator a = _nbrs.begin(); a < _nbrs.end(); a++)
     {
         for(std::vector<int>::iterator i = _nbrs.begin(); i < _nbrs.end(); i++)
         {
-            if ((a - i) < shortestValue)
-                shortestValue = a - i;
+            if (((*a - *i) < shortestValue) && *a > *i)
+                shortestValue = *a - *i;
         }
     }
     return shortestValue;

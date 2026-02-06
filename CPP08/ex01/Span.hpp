@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include <limits.h>
 
 class Span
 {
@@ -27,7 +28,7 @@ class Span
     template <typename It>
     void addNbrs(It begin, It end)
     {
-        for (It it = begin; begin != end; it++)
+        for (It it = begin; it != end; it++)
             addNumber(*it);
     };
 
