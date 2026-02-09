@@ -13,6 +13,13 @@ int main()
     int found = easyfind(vec, 42);
     std::cout << found << std::endl;
 
-    int notFound = easyfind(vec, 0);
-    std::cout << notFound << std::endl;
+    try
+    {
+        int notFound = easyfind(vec, 0);
+        std::cout << notFound << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }

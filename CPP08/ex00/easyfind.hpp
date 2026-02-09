@@ -3,6 +3,14 @@
 
 #include <algorithm>
 
+class NoOccurrence : public std::exception
+{
+    const char* what() const throw()
+    {
+        return "No occurrence found.";
+    }
+};
+
 template <typename T>
 int easyfind(T &t, int n)
 {
@@ -11,7 +19,7 @@ int easyfind(T &t, int n)
     it = std::find(t.begin(), t.end(), n);
 
     if (it == t.end())
-        return -1;
+        throw NoOccurrence();
     else
         return *it;
 }
