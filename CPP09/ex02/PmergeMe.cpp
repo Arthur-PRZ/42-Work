@@ -25,7 +25,8 @@ PmergeMe::~PmergeMe()
 {
 }
 
-int PmergeMe::convertToInt(const std::string& str) {
+int PmergeMe::convertToInt(const std::string& str)
+{
     char* end;
     long val = std::strtol(str.c_str(), &end, 10);
 
@@ -38,13 +39,14 @@ int PmergeMe::convertToInt(const std::string& str) {
     return static_cast<int>(val);
 }
 
-bool PmergeMe::hasSpace(char *str){
+bool PmergeMe::hasSpace(char *str)
+{
     std::string s(str);
 
     for (size_t i = 0; i < s.size(); ++i) 
     {
         if (s[i] == ' ')
-        return true;
+            return true;
     }
     return false;
 }
@@ -76,7 +78,8 @@ bool PmergeMe::checkInput(int ac, char** av)
                 return false;
             }
             int val = convertToInt(av[i]);
-            if (val == -1) {
+            if (val == -1)
+            {
                 std::cerr << "Error: invalid input" << std::endl;
                 return false;
             }
@@ -135,32 +138,35 @@ std::vector<int> PmergeMe::generateInsertionOrder(int n)
     
     order.push_back(1);
     
-    for (size_t k = 2; k < jacobsthal.size(); ++k) {
+    for (size_t k = 2; k < jacobsthal.size(); ++k)
+    {
         int start = jacobsthal[k];
         int end = jacobsthal[k - 1] + 1;
         
         if (start > n)
             start = n;
         
-        for (int i = start; i >= end; --i) {
-            if (std::find(order.begin(), order.end(), i) == order.end()) {
+        for (int i = start; i >= end; --i)
+        {
+            if (std::find(order.begin(), order.end(), i) == order.end())
                 order.push_back(i);
-            }
         }
     }
     
-    for (int i = 1; i <= n; ++i) {
-        if (std::find(order.begin(), order.end(), i) == order.end()) {
+    for (int i = 1; i <= n; ++i)
+    {
+        if (std::find(order.begin(), order.end(), i) == order.end())
             order.push_back(i);
-        }
     }
     
     return order;
 }
 
-int PmergeMe::binarySearchVector(const std::vector<int>& sorted, int value, int right) {
+int PmergeMe::binarySearchVec(const std::vector<int>& sorted, int value, int right)
+{
     int left = 0;
-    while (left < right) {
+    while (left < right)
+    {
         int mid = left + (right - left) / 2;
         if (sorted[mid] < value)
             left = mid + 1;
@@ -170,7 +176,7 @@ int PmergeMe::binarySearchVector(const std::vector<int>& sorted, int value, int 
     return left;
 }
 
-void PmergeMe::fordJohnson(std::vector<int>& arr)
+void PmergeMe::fordJohnsonVec(std::vector<int>& arr)
 {
     if (arr.size() <= 1)
         return;
@@ -201,8 +207,8 @@ void PmergeMe::fordJohnson(std::vector<int>& arr)
     for (size_t i = 0; i < pairs.size(); ++i)
         winners.push_back(pairs[i].first);
     
-    fordJohnson(winners);
-    
+    fordJohnsonVec(winners);
+
     std::vector<std::pair<int, int> > sortedPairs;
     for (size_t i = 0; i < winners.size(); ++i) 
     {
@@ -241,7 +247,7 @@ void PmergeMe::fordJohnson(std::vector<int>& arr)
         if (idx >= 0 && idx < static_cast<int>(pending.size()))
         {
             int value = pending[idx];
-            int pos = binarySearchVector(mainChain, value, mainChain.size());
+            int pos = binarySearchVec(mainChain, value, mainChain.size());
             mainChain.insert(mainChain.begin() + pos, value);
         }
     }
@@ -249,7 +255,8 @@ void PmergeMe::fordJohnson(std::vector<int>& arr)
 }
 
 
-int PmergeMe::binarySearchDeque(const std::deque<int>& sorted, int value, int right) {
+int PmergeMe::binarySearchDeque(const std::deque<int>& sorted, int value, int right)
+{
     int left = 0;
     while (left < right)
     {
@@ -262,7 +269,8 @@ int PmergeMe::binarySearchDeque(const std::deque<int>& sorted, int value, int ri
     return left;
 }
 
-void PmergeMe::fordJohnsonDeque(std::deque<int>& arr) {
+void PmergeMe::fordJohnsonDeque(std::deque<int>& arr)
+{
     if (arr.size() <= 1)
         return;
     
@@ -340,7 +348,6 @@ void PmergeMe::fordJohnsonDeque(std::deque<int>& arr) {
     arr = mainChain;
 }
 
-
 void PmergeMe::printBefore()
 {
     std::cout << "Before: ";
@@ -358,7 +365,7 @@ void PmergeMe::sort()
     clock_t start, end;
     
     start = clock();
-    fordJohnson(_vec);
+    fordJohnsonVec(_vec);
     end = clock();
     _vecTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
     
@@ -368,7 +375,8 @@ void PmergeMe::sort()
     _dequeTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 }
 
-void PmergeMe::printResults() {
+void PmergeMe::printResults()
+{
     std::cout << "After:  ";
     for (size_t i = 0; i < _vec.size(); ++i)
     {

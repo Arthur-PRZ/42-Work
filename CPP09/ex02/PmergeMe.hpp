@@ -22,10 +22,9 @@ class PmergeMe
         std::vector<int> generateJacobsthalSequence(int n);
         std::vector<int> generateInsertionOrder(int n);
         
-        int binarySearchVector(const std::vector<int>& sorted, int value, int right);
-        void fordJohnson(std::vector<int>& arr);
-        
+        int binarySearchVec(const std::vector<int>& sorted, int value, int right);
         int binarySearchDeque(const std::deque<int>& sorted, int value, int right);
+        void fordJohnsonVec(std::vector<int>& arr);
         void fordJohnsonDeque(std::deque<int>& arr);
 
         std::vector<std::string> splitInput(char *str);
