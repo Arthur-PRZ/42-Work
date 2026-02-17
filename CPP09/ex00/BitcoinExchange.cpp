@@ -91,7 +91,7 @@ bool BitcoinExchange::isDateValid(const std::string& date)
     if (day < 1 || day > dayInMonth[month - 1])
         return false;
 
-    if (year == 2009 && month == 1 && day < 3)
+    if (year == 2009 && month == 1 && day < 2)
         return false;
 
     return true;
