@@ -16,6 +16,4 @@ int main(int ac, char **av)
     pmergeme.printBefore();
     pmergeme.sort();
     pmergeme.printResults();
-    
-    return 0;
 }

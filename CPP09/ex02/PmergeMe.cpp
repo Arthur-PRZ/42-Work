@@ -367,12 +367,12 @@ void PmergeMe::sort()
     start = clock();
     fordJohnsonVec(_vec);
     end = clock();
-    _vecTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+    _vecTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
     
     start = clock();
     fordJohnsonDeque(_deque);
     end = clock();
-    _dequeTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+    _dequeTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
 }
 
 void PmergeMe::printResults()
@@ -388,7 +388,7 @@ void PmergeMe::printResults()
     
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << _vec.size() 
-              << " elements with std::vector : " << _vecTime << " us" << std::endl;
+              << " elements with std::vector : " << _vecTime << " ms" << std::endl;
     std::cout << "Time to process a range of " << _deque.size() 
-              << " elements with std::deque  : " << _dequeTime << " us" << std::endl;
+              << " elements with std::deque  : " << _dequeTime << " ms" << std::endl;
 }
