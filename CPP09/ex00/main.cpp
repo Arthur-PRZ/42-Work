@@ -2,9 +2,15 @@
 
 int main(int argc, char **argv)
 {
+    (void)argc;
     BitcoinExchange bitcoin;
     std::ifstream bitcoinFile(argv[1]);
 
-    (void)argc;
+    if (!bitcoinFile.is_open())
+    {
+        std::cerr << "Error: could not open file." << std::endl;
+        return 1;
+    }
+
     bitcoin.printBitcoinValue(bitcoinFile);
 }
