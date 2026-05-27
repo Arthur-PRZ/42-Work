@@ -25,13 +25,13 @@ This module covers:
 # 🛠️ Compilation
 
 ```bash
-c++ -Wall -Wextra -Werror -std=c++98 *.cpp -o program
+make
 ```
 
 Run the executable:
 
 ```bash
-./program
+./"program"
 ```
 
 ---
