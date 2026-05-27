@@ -1,0 +1,113 @@
+# CPP Module 09 — STL
+
+## 📚 Description
+
+**CPP09** focuses on advanced usage of the Standard Template Library (STL) in C++.
+
+This module explores data processing, container optimization, parsing systems, and algorithmic problem solving using STL containers and utilities.
+
+This module covers:
+
+* STL containers
+* maps
+* stacks
+* algorithms
+* parsing
+* data processing
+* iterators
+* container optimization
+* sorting algorithms
+* performance comparison
+* reverse polish notation
+* merge-insert sort
+
+---
+
+# 🛠️ Compilation
+
+```bash
+make
+```
+
+Run the executable:
+
+```bash
+./"program"
+```
+
+---
+
+# 📘 Exercises
+
+## ex00 — Bitcoin Exchange
+
+Implementation of a bitcoin exchange rate system using historical data stored in files.
+
+### Concepts used
+
+* file parsing
+* maps
+* data validation
+* string processing
+* associative containers
+
+---
+
+## ex01 — Reverse Polish Notation
+
+Creation of a calculator evaluating mathematical expressions written in Reverse Polish Notation.
+
+### Concepts used
+
+* stacks
+* parsing
+* expression evaluation
+* algorithms
+* token processing
+
+---
+
+## ex02 — PmergeMe
+
+Implementation of the Ford-Johnson merge-insert sorting algorithm with performance comparison across STL containers.
+
+### Concepts used
+
+* merge-insert sort
+* sorting algorithms
+* vectors and deques
+* recursion
+* performance measurement
+* STL containers
+
+---
+
+# ✅ What I Learned
+
+This module helped me understand:
+
+* advanced STL usage
+* parsing and data validation
+* stack-based algorithms
+* sorting and optimization techniques
+* performance comparison between containers
+* algorithmic problem solving in C++
+
+---
+
+# ⚠️ Project Constraints
+
+* Mandatory standard: **C++98**
+* Compilation flags:
+
+```bash
+-Wall -Wextra -Werror
+```
+
+* Modern C++ features are forbidden.
+
+---
+
+# 👨‍💻 Author
+
+Project developed as part of the 42 school curriculum.
