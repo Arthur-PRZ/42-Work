@@ -8,7 +8,7 @@ This module explores data processing, container optimization, parsing systems, a
 
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
