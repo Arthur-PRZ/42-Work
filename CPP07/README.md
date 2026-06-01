@@ -1,24 +1,14 @@
-# CPP Module 07 — C++ Templates
+# 📘 CPP Module 07 — C++ Templates
 
-## 📚 Description
+## Introduction
 
 **CPP07** introduces templates in C++ and explores generic programming.
 
 This module focuses on writing reusable and flexible code that can work with multiple data types without duplication.
 
-This module covers:
-
-* function templates
-* class templates
-* template instantiation
-* reusable code design
-* iterators
-* arrays
-* template specialization
-
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -27,12 +17,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — Start with a few functions
 
@@ -75,20 +65,7 @@ Implementation of a templated array class with bounds checking and dynamic memor
 
 ---
 
-# ✅ What I Learned
-
-This module helped me understand:
-
-* generic programming in C++
-* how templates work internally
-* creating reusable code for multiple types
-* building generic containers
-* template-based abstraction
-* safer and more flexible code design
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -101,6 +78,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
