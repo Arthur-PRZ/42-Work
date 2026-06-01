@@ -1,26 +1,12 @@
-# CPP Module 01 — Memory Allocation, References & Pointers
+# 📘 CPP Module 01 — Memory Allocation, References & Pointers
 
-## 📚 Description
+## Description
 
 **CPP01** expands on the basics introduced in CPP00 and focuses on memory management and object manipulation in C++.
 
-This module covers:
-
-* stack vs heap allocation
-* pointers and references
-* dynamic memory allocation
-* constructors and destructors
-* member functions
-* file streams
-* references to objects
-* object lifetime
-* switch statements
-* basic class design
-* memory leaks prevention
-
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -29,12 +15,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+#  Exercises
 
 ## ex00 — BraiiiiiiinnnzzzZ
 
@@ -129,21 +115,7 @@ An extension of the previous exercise with filtering behavior depending on the s
 
 ---
 
-# ✅ What I Learned
-
-This module helped me understand:
-
-* memory allocation in C++
-* the difference between stack and heap
-* how pointers and references work
-* object lifetime management
-* file handling using streams
-* preventing memory leaks
-* writing cleaner object-oriented code
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -156,6 +128,5 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
-
-Project developed as part of the 42 school curriculum.
+#  Author
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
