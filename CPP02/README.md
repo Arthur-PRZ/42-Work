@@ -1,28 +1,14 @@
-# CPP Module 02 — Ad-hoc Polymorphism, Operator Overloading & Orthodox Canonical Form
+# 📘 CPP Module 02 — Ad-hoc Polymorphism, Operator Overloading & Orthodox Canonical Form
 
-## 📚 Description
+## Introduction
 
 **CPP02** introduces fixed-point numbers, operator overloading, and the Orthodox Canonical Form in C++.
 
 This module focuses on writing more complete and reusable classes while learning how operators work internally.
 
-This module covers:
-
-* operator overloading
-* fixed-point numbers
-* copy constructors
-* copy assignment operators
-* destructors
-* Orthodox Canonical Form
-* comparison operators
-* arithmetic operators
-* increment and decrement operators
-* class encapsulation
-* static member functions
-
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -31,12 +17,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — My First Class in Orthodox Canonical Form
 
@@ -94,21 +80,8 @@ Implementation of a function determining whether a point is inside a triangle us
 
 ---
 
-# ✅ What I Learned
 
-This module helped me understand:
-
-* how operator overloading works
-* the Orthodox Canonical Form
-* fixed-point arithmetic in C++
-* writing reusable and complete classes
-* object copying behavior
-* implementing custom operators
-* improving class design and encapsulation
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -121,6 +94,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
