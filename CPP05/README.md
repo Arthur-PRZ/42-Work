@@ -8,7 +8,7 @@ This module explores class dependencies, validation systems, and the use of exce
 
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -76,7 +76,7 @@ Implementation of an Intern class capable of dynamically creating forms.
 
 ---
 
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
