@@ -1,26 +1,15 @@
-# CPP Module 04 — Subtype Polymorphism, Abstract Classes & Interfaces
+# 📘 CPP Module 04 — Subtype Polymorphism, Abstract Classes & Interfaces
 
-## 📚 Description
+## Introduction
 
 **CPP04** introduces subtype polymorphism, abstract classes, and interfaces in C++.
 
 This module focuses on dynamic behavior through inheritance, virtual functions, and abstract designs.
 It also explores deep copies and proper memory management in object-oriented programming.
 
-This module covers:
-
-* virtual functions
-* abstract classes
-* interfaces
-* deep copies
-* inheritance hierarchies
-* virtual destructors
-* memory management
-* canonical class form
-
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -29,12 +18,12 @@ make
 Run the executable:
 
 ```bash
-./program
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — Polymorphism
 
@@ -73,20 +62,7 @@ Transforming the Animal class into an abstract base class and using interfaces t
 
 ---
 
-# ✅ What I Learned
-
-This module helped me understand:
-
-* dynamic polymorphism in C++
-* how virtual functions work
-* the purpose of abstract classes and interfaces
-* deep copy behavior
-* proper memory management with inheritance
-* designing flexible object-oriented architectures
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -99,6 +75,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
