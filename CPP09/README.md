@@ -1,25 +1,10 @@
-# CPP Module 09 — STL
+# 📘 CPP Module 09 — STL
 
-## 📚 Description
+## Introdution
 
 **CPP09** focuses on advanced usage of the Standard Template Library (STL) in C++.
 
 This module explores data processing, container optimization, parsing systems, and algorithmic problem solving using STL containers and utilities.
-
-This module covers:
-
-* STL containers
-* maps
-* stacks
-* algorithms
-* parsing
-* data processing
-* iterators
-* container optimization
-* sorting algorithms
-* performance comparison
-* reverse polish notation
-* merge-insert sort
 
 ---
 
@@ -32,12 +17,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — Bitcoin Exchange
 
@@ -82,20 +67,8 @@ Implementation of the Ford-Johnson merge-insert sorting algorithm with performan
 
 ---
 
-# ✅ What I Learned
 
-This module helped me understand:
-
-* advanced STL usage
-* parsing and data validation
-* stack-based algorithms
-* sorting and optimization techniques
-* performance comparison between containers
-* algorithmic problem solving in C++
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -108,6 +81,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
