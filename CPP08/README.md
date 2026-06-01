@@ -1,27 +1,14 @@
-# CPP Module 08 — Templated Containers, Iterators & Algorithms
+# 📘 CPP Module 08 — Templated Containers, Iterators & Algorithms
 
-## 📚 Description
+## Introduction
 
 **CPP08** explores the use of templated containers, iterators, and algorithms in C++.
 
 This module focuses on manipulating STL containers, searching data efficiently, and understanding how generic algorithms work.
 
-This module covers:
-
-* STL containers
-* iterators
-* algorithms
-* templates
-* container traversal
-* exception handling
-* associative containers
-* sequence containers
-* data searching
-* sorting algorithms
-
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -30,12 +17,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — Easy find
 
@@ -79,20 +66,7 @@ Implementation of an iterable stack by extending the standard stack container.
 
 ---
 
-# ✅ What I Learned
-
-This module helped me understand:
-
-* how STL containers work
-* iterator usage in C++
-* generic algorithms and templates
-* container traversal and manipulation
-* extending standard containers
-* efficient data searching and sorting
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -105,6 +79,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
