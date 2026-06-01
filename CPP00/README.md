@@ -1,28 +1,13 @@
-# CPP Module 00 — Introduction to C++
+# 📘 CPP Module 00 — Introduction to C++
 
-## 📚 Description
+##  Introduction
 
 **CPP00** is the first C++ module in the 42 curriculum.
 It introduces the fundamentals of C++ and object-oriented programming through several small exercises.
 
-This module covers:
-
-* namespaces
-* classes and objects
-* member functions
-* encapsulation
-* standard input/output streams
-* `std::string`
-* basic C++ syntax
-* user interaction
-* object arrays
-* formatted output
-* timestamps and logging systems
-* differences between C and C++
-
 ---
 
-# 🛠️ Compilation
+#  Compilation
 
 ```bash
 make
@@ -31,12 +16,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — Megaphone
 
@@ -104,19 +89,8 @@ A small banking system simulation using classes and formatted logs.
 
 ---
 
-# ✅ What I Learned
 
-This module helped me understand:
-
-* the basics of C++
-* object-oriented programming
-* how to structure projects using classes
-* standard input/output streams
-* writing code following the C++98 standard
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -129,6 +103,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
