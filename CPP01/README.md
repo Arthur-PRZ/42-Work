@@ -1,6 +1,6 @@
 # 📘 CPP Module 01 — Memory Allocation, References & Pointers
 
-## Description
+## Introduction
 
 **CPP01** expands on the basics introduced in CPP00 and focuses on memory management and object manipulation in C++.
 
