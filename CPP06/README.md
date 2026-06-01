@@ -1,25 +1,14 @@
-# CPP Module 06 — C++ Casts
+# 📘 CPP Module 06 — C++ Casts
 
-## 📚 Description
+## Introduction
 
 **CPP06** introduces type casting in C++ and explores the different casting operators available in the language.
 
 This module focuses on type conversion, serialization, scalar conversion, and runtime type identification.
 
-This module covers:
-
-* scalar conversion
-* static_cast
-* reinterpret_cast
-* dynamic_cast
-* type conversion
-* serialization
-* polymorphism
-* pointer manipulation
-
 ---
 
-# 🛠️ Compilation
+# Compilation
 
 ```bash
 make
@@ -28,12 +17,12 @@ make
 Run the executable:
 
 ```bash
-./"program"
+./"program_name"
 ```
 
 ---
 
-# 📘 Exercises
+# Exercises
 
 ## ex00 — Conversion of scalar types
 
@@ -73,19 +62,7 @@ Using runtime type identification to detect the real type of objects through bas
 
 ---
 
-# ✅ What I Learned
-
-This module helped me understand:
-
-* the different C++ casting operators
-* serialization concepts
-* low-level pointer manipulation
-* data conversion and representation
-* safer type handling in object-oriented programming
-
----
-
-# ⚠️ Project Constraints
+# Project Constraints
 
 * Mandatory standard: **C++98**
 * Compilation flags:
@@ -98,6 +75,6 @@ This module helped me understand:
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-Project developed as part of the 42 school curriculum.
+Made by [Arthur-PRZ](https://github.com/Arthur-PRZ).
